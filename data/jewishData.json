@@ -1,0 +1,178 @@
+[
+    {
+        "countries": [
+            {
+                "continent": "europe",
+                "country": "europe",
+                "population": 8977581,
+                "year": 1900
+            },
+            {
+                "continent": "asia",
+                "country": "asia",
+                "population": 352340,
+                "year": 1900
+            },
+            {
+                "continent": "africa",
+                "country": "africa",
+                "population": 372659,
+                "year": 1900
+            },
+            {
+                "continent": "americas",
+                "country": "americas",
+                "population": 1553656,
+                "year": 1900
+            },
+            {
+                "continent": "oceana",
+                "country": "oceana",
+                "population": 16840,
+                "year": 1900
+            }
+        ],
+        "year": "1900"
+    },
+    {
+        "countries": [
+            {
+                "continent": "europe",
+                "country": "europe",
+                "population": 9237314,
+                "year": 1942
+            },
+            {
+                "continent": "asia",
+                "country": "asia",
+                "population": 774049,
+                "year": 1942
+            },
+            {
+                "continent": "africa",
+                "country": "africa",
+                "population": 593736,
+                "year": 1942
+            },
+            {
+                "continent": "americas",
+                "country": "americas",
+                "population": 4739769,
+                "year": 1942
+            },
+            {
+                "continent": "oceana",
+                "country": "oceana",
+                "population": 26954,
+                "year": 1942
+            }
+        ],
+        "year": "1942"
+    },
+    {
+        "countries": [
+            {
+                "continent": "europe",
+                "country": "europe",
+                "population": 3228000,
+                "year": 1970
+            },
+            {
+                "continent": "asia",
+                "country": "asia",
+                "population": 2940000,
+                "year": 1970
+            },
+            {
+                "continent": "africa",
+                "country": "africa",
+                "population": 195000,
+                "year": 1970
+            },
+            {
+                "continent": "americas",
+                "country": "americas",
+                "population": 6200000,
+                "year": 1970
+            },
+            {
+                "continent": "oceana",
+                "country": "oceana",
+                "population": 70000,
+                "year": 1970
+            }
+        ],
+        "year": "1970"
+    },
+    {
+        "countries": [
+            {
+                "continent": "europe",
+                "country": "europe",
+                "population": 1455900,
+                "year": 2010
+            },
+            {
+                "continent": "asia",
+                "country": "asia",
+                "population": 5741500,
+                "year": 2010
+            },
+            {
+                "continent": "africa",
+                "country": "africa",
+                "population": 76200,
+                "year": 2010
+            },
+            {
+                "continent": "americas",
+                "country": "americas",
+                "population": 6039600,
+                "year": 2010
+            },
+            {
+                "continent": "oceana",
+                "country": "oceana",
+                "population": 115100,
+                "year": 2010
+            }
+        ],
+        "year": "2010"
+    },
+    {
+        "countries": [
+            {
+                "continent": "europe",
+                "country": "europe",
+                "population": 1300000,
+                "year": 2020
+            },
+            {
+                "continent": "asia",
+                "country": "asia",
+                "population": 6699700,
+                "year": 2020
+            },
+            {
+                "continent": "africa",
+                "country": "africa",
+                "population": 72000,
+                "year": 2020
+            },
+            {
+                "continent": "americas",
+                "country": "americas",
+                "population": 7600000,
+                "year": 2020
+            },
+            {
+                "continent": "oceana",
+                "country": "oceana",
+                "population": 125600,
+                "year": 2020
+            }
+        ],
+        "year": "2020"
+    }
+
+]
