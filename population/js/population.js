@@ -1,9 +1,3 @@
-/*
-*    main.js
-*    Mastering Data Visualization with D3.js
-*    6.7 - jQuery UI slider
-*/
-
 const MARGIN = { LEFT: 100, RIGHT: 50, TOP: 70, BOTTOM: 50 }
 const WIDTH = 1000 - MARGIN.LEFT - MARGIN.RIGHT
 const HEIGHT = 700 - MARGIN.TOP - MARGIN.BOTTOM
@@ -19,27 +13,11 @@ let time = 0
 let interval
 let formattedData
 
-// // Tooltip
-// const tip = d3.tip()
-//   .attr('class', 'd3-tip')
-// 	.html(d => {
-// 		let text = `<strong>Country:</strong> <span style='color:red;text-transform:capitalize'>${d.country}</span><br>`
-// 		text += `<strong>Continent:</strong> <span style='color:red;text-transform:capitalize'>${d.continent}</span><br>`
-// 		text += `<strong>Life Expectancy:</strong> <span style='color:red'>${d3.format(".2f")(d.life_exp)}</span><br>`
-// 		text += `<strong>GDP Per Capita:</strong> <span style='color:red'>${d3.format("$,.0f")(d.income)}</span><br>`
-// 		text += `<strong>Population:</strong> <span style='color:red'>${d3.format(",.0f")(d.population)}</span><br>`
-// 		return text
-// 	})
-// g.call(tip)
 
 // Scales
 const x = d3.scaleLinear()
 	.range([0, WIDTH])
 	.domain([1900, 2020])
-// const y = d3.scaleLog()
-// 	.base(10)
-// 	.range([HEIGHT, 0])
-// 	.domain([16840, 6699700])
 const y = d3.scaleLinear()
 	.range([HEIGHT, 0])
 	.domain([16840, 8977581])
@@ -49,12 +27,6 @@ const area = d3.scaleLinear()
 const continentColor = d3.scaleOrdinal(d3.schemePastel1)
 
 // Labels
-// const xLabel = g.append("text")
-// 	.attr("y", HEIGHT + 50)
-// 	.attr("x", WIDTH / 2)
-// 	.attr("font-size", "20px")
-// 	.attr("text-anchor", "middle")
-// 	.text("Date")
 const yLabel = g.append("text")
 	.attr("transform", "rotate(-90)")
 	.attr("y", -40)
@@ -62,13 +34,7 @@ const yLabel = g.append("text")
 	.attr("font-size", "20px")
 	.attr("text-anchor", "middle")
 	.text("Population")
-// const timeLabel = g.append("text")
-// 	.attr("y", HEIGHT - 10)
-// 	.attr("x", WIDTH - 40)
-// 	.attr("font-size", "40px")
-// 	.attr("opacity", "0.4")
-// 	.attr("text-anchor", "middle")
-// 	.text("1800")
+
 
 // X Axis
 const xAxisCall = d3.axisBottom(x).tickFormat(d3.format(".4"))
@@ -150,16 +116,6 @@ $("#continent-select")
 		update(formattedData[time])
 	})
 
-// $("#date-slider").slider({
-// 	min: 1900,
-// 	max: 2020,
-// 	step: 1,
-// 	slide: (event, ui) => {
-// 		time = ui.value - 1800
-// 		update(formattedData[time])
-// 	}
-// })
-
 function update(data) {
 	
 	// standard transition time for the visualization
@@ -193,13 +149,4 @@ function update(data) {
 			.attr("cy", d => y(d.population))
 			.attr("cx", d => x(d.year))
 			.attr("r", d => Math.sqrt(area(d.population) / Math.PI))
-	// remove circles at the end of the timeline
-	// if (time == 4) {
-	// 	setTimeout(circles.remove(), 700);
-	// }
-	// update the time label
-	// timeLabel.text(String(time + 1800))
-
-	// $("#year")[0].innerHTML = String(time + 1800)
-	// $("#date-slider").slider("value", Number(time + 1800))
 }
