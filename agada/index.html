@@ -12,23 +12,39 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-light bg-light">
+	<nav class="navbar" style="background-color: #ffffff">
 		<div class="container">
-			<h1> Aggada vs. Halacha </h1>
-			<select id="seder-select" class="form-control">
-				<option selected value="all">All</option>
-				<option value="Kodashim">Kodashim</option>
-				<option value="Tahorot">Tahorot</option>
-				<option value="Nashim">Nashim</option>
-				<option value="Nezikin">Nezikin</option>
-				<option value="Moed">Moed</option>
-				<option value="Zeraim">Zeraim</option>
-			</select>
+				<h1> Aggada vs. Halacha </h1>
 		</div>
 	</nav>
 
 	<!-- Bootstrap grid setup -->
-	<div class="container">
+	<div class="container-fluid">
+		<div class="row">
+				<div class="col-3"></div>
+				<div class="col-6">
+						<p>The Talmud (ש"ס) can be broken down into two main categories: The definitions, sources and explanations of all Jewish law know as Halacha (הלכה). 
+								And the principles of Jewish faith, philosophy, ethics and stories known as Agada (אגדה).<br><br>
+								This interactive bar-chart shows the proportion of Agada in each tractate in ש"ס.
+							Use the dropdown selection below to narrow the view to a specific tractate.</p>
+				</div>
+				<div class="col-3"></div>
+		</div>
+		<div class="row">
+				<div class="col-3"></div>
+				<div class="col-6">
+						<select id="seder-select" class="form-control">
+								<option selected value="all">All</option>
+								<option value="Seder Kodashim">Kodashim</option>
+								<option value="Seder Tahorot">Tahorot</option>
+								<option value="Seder Nashim">Nashim</option>
+								<option value="Seder Nezikin">Nezikin</option>
+								<option value="Seder Moed">Moed</option>
+								<option value="Seder Zeraim">Zeraim</option>
+							</select>
+				</div>
+				<div class="col-3"></div>
+		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<div id="chart-area"></div>                 
