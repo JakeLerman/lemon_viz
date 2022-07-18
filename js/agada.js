@@ -7,9 +7,6 @@ var font = 'Georgia'
     .append("svg")
       .attr("width", width)
       .attr("height", height)
-  var g = svg
-    .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
   
   // X axis
 const x = d3.scaleBand()
@@ -21,9 +18,6 @@ const x = d3.scaleBand()
 const y = d3.scaleLinear()
   .domain([0, 100])
   .range([height - margin.top - margin.bottom, 0]);
-  g.append("g")
-    .call(d3.axisLeft(y))
-    .style("color","#464655ff");
         
   // Colour Scale
   const sedarim = ["Kodashim", "Tahorot", "Nashim", "Nezikin","Moed","Zeraim"]
@@ -32,12 +26,49 @@ const y = d3.scaleLinear()
   // standard transition time for the visualization
   const t = d3.transition().duration(1000)
 
-  // Parse the Data
-  function loadData () {
+  // load data
   d3.csv("data/agada_halacha.csv").then( function(raw_data) {
-    data = raw_data
+    data = raw_data})
+  
+// ------------------------ Pie Chart------------------------------
 
-    x.domain(raw_data.map(d => d.Masechet))
+
+function buildPieChart() {
+
+  const radius = Math.min(width, height) / 2 - 60
+
+  const pie = d3.pie()
+
+  const pieData = pie([20,80])
+  console.log(pieData)
+
+  g = svg
+  .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  g.selectAll("pie")
+      .data(pieData)
+      .join('path')
+      .attr('d', d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius))
+      .attr('fill', d => {masechta_colours(d)})
+      .attr('stroke', 'black')
+      .style("stroke-width", "2px")
+      .style("opacity", 0.7)
+}
+
+// ------------------------ Bar Chart------------------------------
+
+  // Parse the Data
+  function loadInitialGraph () {
+  // d3.csv("data/agada_halacha.csv").then( function(raw_data) {
+  //   data = raw_data
+  g = svg
+  .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    x.domain(data.map(d => d.Masechet))
     g.append("g").attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
     .call(d3.axisBottom(x))
     .style("color","#464655ff")
@@ -47,8 +78,12 @@ const y = d3.scaleLinear()
       .style("color","#464655ff")
       .attr("font-family", "Calibri")
 
-    update(data)
-  })
+      g.append("g")
+      .call(d3.axisLeft(y))
+      .style("color","#464655ff");
+
+    update(data, "all")
+  // })
 }
 
   function update(data, Seder = "all") {
@@ -68,14 +103,14 @@ const y = d3.scaleLinear()
       function(enter) {return enter.append("rect")
                           .attr("x", d => x(d.Masechet))
                           .attr("y", d => y(d.percent_aggada))
-                          .transition(t)
+                          .transition(1000)
                           .attr("width", x.bandwidth())
                           .attr("height", d => height - margin.top - margin.bottom - y(d.percent_aggada))
                           .attr("fill", d => masechta_colours(d.Seder))
                           .style('opacity',1)
                             },
       function(update) {return update},
-      function(exit) {return exit.transition(t)
+      function(exit) {return exit.transition(1000)
                                 .style("opacity",0)
                                 .remove()
                               }
@@ -84,14 +119,12 @@ const y = d3.scaleLinear()
 
   function clear() {
     svg.selectAll("g")
-      .transition(t)
+      .transition(1000)
       .style("opacity", 0)
       .remove();
   }
 
-// TODO: Tooltip
-
-//Scrollama
+//------------------------Scrollama----------------------------------
 //// using d3 for convenience, and storing a selected elements
 var container = d3.select('#scroll');
 var graphic = container.select('.scroll__graphic');
@@ -142,7 +175,12 @@ function handleStepEnter(response) {
 	var stepData = parseFloat(response.element.getAttribute('data-step'));
 	console.log(stepData)
 
-  if (stepData === 1) {
+  if (stepData === 0) {
+    buildPieChart()
+  }
+
+  if (stepData === 1 && response.direction == "down") {
+    loadInitialGraph()
     update(data, "all")
   }
 
@@ -166,13 +204,26 @@ function handleStepEnter(response) {
     update(data, "Seder Moed")
   }
 
-  if (stepData === 7) {
+  if (stepData === 7 && response.direction == "down") {
     update(data, "Seder Zeraim")
   }
 
-  if (stepData === 8) {
-    // clear()
+  if (stepData === 8 && response.direction == "down") {
+    clear()
   }
+
+  if (stepData === 7 && response.direction == "up") {
+    loadInitialGraph()
+    update(data, "Seder Zeraim")
+    }
+  
+  if (stepData === 1 && response.direction == "up") {
+    clear()
+    }
+
+  // if (stepData === 0) {
+  //     clear()
+  //     }
 	
 }
 
@@ -201,9 +252,9 @@ function init() {
 	// 3. bind scrollama event handlers (this can be chained like below)
 	scroller
 		.setup({
-			container: '#scroll', // our outermost scrollytelling element
-			graphic: '.scroll__graphic', // the graphic
-			text: '.scroll__text', // the step container
+			// container: '#scroll', // our outermost scrollytelling element
+			// graphic: '.scroll__graphic', // the graphic
+			// text: '.scroll__text', // the step container
 			step: '.scroll__text .step', // the step elements
 			offset: 0.7, // set the trigger to be 1/2 way down screen
 			debug: false, // display the trigger offset for testing
@@ -214,9 +265,6 @@ function init() {
 
 	// setup resize event
 	window.addEventListener('resize', handleResize);
-
-  // load data to display inital viz
-  loadData()
 }
 
 init()
