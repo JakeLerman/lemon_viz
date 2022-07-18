@@ -15,6 +15,7 @@ var font = 'Georgia'
 const x = d3.scaleBand()
   .range([ 0, width - margin.left - margin.right])
   .padding(0.2);
+    // domain added with data
 
   // Add Y axis
 const y = d3.scaleLinear()
@@ -23,18 +24,19 @@ const y = d3.scaleLinear()
   g.append("g")
     .call(d3.axisLeft(y))
     .style("color","#464655ff");
-
         
   // Colour Scale
   const sedarim = ["Kodashim", "Tahorot", "Nashim", "Nezikin","Moed","Zeraim"]
-
   const masechta_colours = d3.scaleOrdinal().domain(sedarim).range(d3.schemePastel2)
 
+  // standard transition time for the visualization
+  const t = d3.transition().duration(1000)
+
   // Parse the Data
+  function loadData () {
   d3.csv("data/agada_halacha.csv").then( function(raw_data) {
     data = raw_data
 
-  // Add X Axis
     x.domain(raw_data.map(d => d.Masechet))
     g.append("g").attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
     .call(d3.axisBottom(x))
@@ -47,46 +49,49 @@ const y = d3.scaleLinear()
 
     update(data)
   })
+}
 
-  function update(data) {
-    init()
-
-    // standard transition time for the visualization
-    const t = d3.transition().duration(1000)
+  function update(data, Seder = "all") {
 
     // filter data based on selection
-    var Seder = "all"
 
     const filteredData = data.filter(d => {
       if (Seder === "all") return true
       else {return d.Seder == Seder}
         })
 
-// JOIN new data with old elements.
-const bars = g.selectAll("rect")
-.data(filteredData, d => d.Masechet)
+    // JOIN new data with old elements.
+    const bars = g.selectAll("rect")
+    .data(filteredData, d => d.Masechet)
 
-bars.join(
-  function(enter) {return enter.append("rect")
-                      .attr("x", d => x(d.Masechet))
-                      .attr("y", d => y(d.percent_aggada))
-                      .transition(t)
-                      .attr("width", x.bandwidth())
-                      .attr("height", d => height - margin.top - margin.bottom - y(d.percent_aggada))
-                      .attr("fill", d => masechta_colours(d.Seder))
-                      .style('opacity',1)
-                        },
-  function(update) {return update},
-  function(exit) {return exit.transition(t)
-                            .style("opacity",0)
-                            .remove()
-                          }
-)
+    bars.join(
+      function(enter) {return enter.append("rect")
+                          .attr("x", d => x(d.Masechet))
+                          .attr("y", d => y(d.percent_aggada))
+                          .transition(t)
+                          .attr("width", x.bandwidth())
+                          .attr("height", d => height - margin.top - margin.bottom - y(d.percent_aggada))
+                          .attr("fill", d => masechta_colours(d.Seder))
+                          .style('opacity',1)
+                            },
+      function(update) {return update},
+      function(exit) {return exit.transition(t)
+                                .style("opacity",0)
+                                .remove()
+                              }
+    )
+  }
+
+  function clear() {
+    svg.selectAll("g")
+      .transition(t)
+      .style("opacity", 0)
+      .remove();
   }
 
 // TODO: Tooltip
 
-//scrollama stuff
+//Scrollama
 //// using d3 for convenience, and storing a selected elements
 var container = d3.select('#scroll');
 var graphic = container.select('.scroll__graphic');
@@ -136,6 +141,38 @@ function handleStepEnter(response) {
 	// update graphic based on step here
 	var stepData = parseFloat(response.element.getAttribute('data-step'));
 	console.log(stepData)
+
+  if (stepData === 1) {
+    update(data, "all")
+  }
+
+  if (stepData === 2) {
+    update(data, "Seder Kodashim")
+  }
+
+  if (stepData === 3) {
+    update(data, "Seder Taharos")
+  }
+
+  if (stepData === 4) {
+    update(data, "Seder Nashim")
+  }
+
+  if (stepData === 5) {
+    update(data, "Seder Nezikin")
+  }
+
+  if (stepData === 6) {
+    update(data, "Seder Moed")
+  }
+
+  if (stepData === 7) {
+    update(data, "Seder Zeraim")
+  }
+
+  if (stepData === 8) {
+    // clear()
+  }
 	
 }
 
@@ -177,4 +214,9 @@ function init() {
 
 	// setup resize event
 	window.addEventListener('resize', handleResize);
+
+  // load data to display inital viz
+  loadData()
 }
+
+init()
