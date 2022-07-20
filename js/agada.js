@@ -20,7 +20,7 @@ const y = d3.scaleLinear()
   .range([height - margin.top - margin.bottom, 0]);
         
   // Colour Scale
-  const sedarim = ["Kodashim", "Tahorot", "Nashim", "Nezikin","Moed","Zeraim"]
+  const sedarim = ["Kodashim", "Tahorot", "Nashim", "Nezikin","Moed","Zeraim", 0, 1]
   const masechta_colours = d3.scaleOrdinal().domain(sedarim).range(d3.schemePastel2)
 
   // standard transition time for the visualization
@@ -35,16 +35,15 @@ const y = d3.scaleLinear()
 
 function buildPieChart() {
 
-  const radius = Math.min(width, height) / 2 - 60
+  const radius = Math.min(width, height) / 2.1
 
   const pie = d3.pie()
 
-  const pieData = pie([20,80])
-  console.log(pieData)
+  const pieData = pie([1610388,255690])
 
   g = svg
   .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${width/2},${height/2})`);
 
   g.selectAll("pie")
       .data(pieData)
@@ -52,10 +51,13 @@ function buildPieChart() {
       .attr('d', d3.arc()
         .innerRadius(0)
         .outerRadius(radius))
-      .attr('fill', d => {masechta_colours(d)})
-      .attr('stroke', 'black')
+      .attr('stroke', 'white')
+      .style('fill', d => masechta_colours(d.index))
       .style("stroke-width", "2px")
+      .style("opacity", 0)
+      .transition(d3.transition().duration(700))
       .style("opacity", 0.7)
+
 }
 
 // ------------------------ Bar Chart------------------------------
@@ -103,14 +105,14 @@ function buildPieChart() {
       function(enter) {return enter.append("rect")
                           .attr("x", d => x(d.Masechet))
                           .attr("y", d => y(d.percent_aggada))
-                          .transition(1000)
+                          .transition(d3.transition().duration(500))
                           .attr("width", x.bandwidth())
                           .attr("height", d => height - margin.top - margin.bottom - y(d.percent_aggada))
                           .attr("fill", d => masechta_colours(d.Seder))
                           .style('opacity',1)
                             },
       function(update) {return update},
-      function(exit) {return exit.transition(1000)
+      function(exit) {return exit.transition(d3.transition().duration(500))
                                 .style("opacity",0)
                                 .remove()
                               }
@@ -174,12 +176,13 @@ function handleStepEnter(response) {
 	// update graphic based on step here
 	var stepData = parseFloat(response.element.getAttribute('data-step'));
 	console.log(stepData)
-
-  if (stepData === 0) {
+              // Scrolling Down
+  if (stepData === 0 && response.direction == "down") {
     buildPieChart()
   }
 
   if (stepData === 1 && response.direction == "down") {
+    clear()
     loadInitialGraph()
     update(data, "all")
   }
@@ -211,6 +214,7 @@ function handleStepEnter(response) {
   if (stepData === 8 && response.direction == "down") {
     clear()
   }
+          // Scrolling Up
 
   if (stepData === 7 && response.direction == "up") {
     loadInitialGraph()
@@ -218,12 +222,17 @@ function handleStepEnter(response) {
     }
   
   if (stepData === 1 && response.direction == "up") {
+    update(data, "all")
+    }
+  
+  if (stepData === 0 && response.direction == "up") {
+    clear()
+    buildPieChart()
+    }
+  
+  if (stepData === -1) {
     clear()
     }
-
-  // if (stepData === 0) {
-  //     clear()
-  //     }
 	
 }
 
