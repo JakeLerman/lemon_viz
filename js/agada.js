@@ -262,8 +262,8 @@ function init() {
 	scroller
 		.setup({
 			// container: '#scroll', // our outermost scrollytelling element
-			// graphic: '.scroll__graphic', // the graphic
-			// text: '.scroll__text', // the step container
+			graphic: '.scroll__graphic', // the graphic
+			text: '.scroll__text', // the step container
 			step: '.scroll__text .step', // the step elements
 			offset: 0.7, // set the trigger to be 1/2 way down screen
 			debug: false, // display the trigger offset for testing
