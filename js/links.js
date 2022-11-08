@@ -71,7 +71,7 @@ function SankeyChart({
 		.nodeWidth(nodeWidth)
 		.nodePadding(nodePadding)
 		.extent([[marginLeft, marginTop], [width - marginRight, height - marginBottom]])
-	  ({nodes, links});
+		.linkSort(function(link1, link2) {return link1.value > link2.value ? -1 : 1})({nodes, links})
   
 	// Compute titles and labels using layout nodes, so as to access aggregate values.
 	if (typeof format !== "function") format = d3.format(format);
@@ -81,6 +81,9 @@ function SankeyChart({
   
 	// A unique identifier for clip paths (to avoid conflicts).
 	const uid = `O-${Math.random().toString(16).slice(2)}`;
+
+	// Remove old sankey/SVG
+	d3.selectAll("svg").remove();
   
 	const svg = d3.create("svg")
 		.attr("width", width)
@@ -152,29 +155,48 @@ function SankeyChart({
 	return Object.assign(svg.node(), {scales: {color}});
   }
 
-// function loadList(data, list) {
-// 	const LS = d3.map(data, (d)=> d.source)
-// 	const nodeList = Array.fron(new setInterval(LS))
-// 	nodeList.forEach((item) => {
-// 		let option = document.createElement("option")
-// 		option.innerText = item
-// 		list.appendChild(option)
-// 	})
-// }
+function loadList(data, list) {
+	const LS = d3.map(data, (d)=> d.source)
+	const nodeList = Array.from(new Set(LS))
+	nodeList.forEach((item) => {
+		let option = document.createElement("option")
+		option.innerText = item
+		list.appendChild(option)
+	})
+}
 
 d3.csv("data/talmud_tanach_links.csv").then(function(data){
-	// const list = document.getElementById("myList")
-	// list.addEventListener("click",update)
+	// Format Data
+	data.forEach(row => {
+		row.value = +row.value
+		return data
+	})
 
+	// Add list elements & event listener
+	const list = document.getElementById("myList")
+	loadList(data,list)
+	list.addEventListener("click",update)
+
+	// Run update for initial load
+	update()
+	
+	// Update function for sankey
+	function update(){
+		let val = $("#myList").val();
+		let filteredData = data.filter(d=>d.source === val)
 
 	const chart = SankeyChart({
-		links: data
+		links: filteredData
 	  }, {
 		nodeGroup: d => d.id.split(/\W/)[0], // take first word for color
 		nodeAlign: "justify", // e.g., d3.sankeyJustify; set by input above
-		format: (f => d => `${f(d)} TWh`)(d3.format(",.1~f")),
+		format: (f => d => `${f(d)}`)(d3.format(",.1~f")),
 		height: 600
 	  })
 
 	  d3.select("#my_dataviz").node().append(chart)
+	}
 })
+
+// TODO: Add transition
+// TODO: Allow for comparison somehow
