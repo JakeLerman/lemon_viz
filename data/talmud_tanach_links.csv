@@ -1,0 +1,975 @@
+,source,target,value
+0,Arakhin,Deuteronomy,34
+1,Arakhin,Ecclesiastes,1
+2,Arakhin,Exodus,45
+3,Arakhin,Ezekiel,7
+4,Arakhin,Ezra,8
+5,Arakhin,Genesis,7
+6,Arakhin,Hosea,2
+7,Arakhin,I Chronicles,3
+8,Arakhin,I Kings,2
+9,Arakhin,I Samuel,3
+10,Arakhin,II Chronicles,7
+11,Arakhin,II Kings,3
+12,Arakhin,II Samuel,1
+13,Arakhin,Isaiah,4
+14,Arakhin,Jeremiah,11
+15,Arakhin,Job,1
+16,Arakhin,Joshua,3
+17,Arakhin,Judges,2
+18,Arakhin,Lamentations,1
+19,Arakhin,Leviticus,237
+20,Arakhin,Nehemiah,3
+21,Arakhin,Numbers,39
+22,Arakhin,Proverbs,7
+23,Arakhin,Psalms,35
+24,Avodah Zarah,Amos,1
+25,Avodah Zarah,Daniel,4
+26,Avodah Zarah,Deuteronomy,110
+27,Avodah Zarah,Ecclesiastes,4
+28,Avodah Zarah,Exodus,40
+29,Avodah Zarah,Ezekiel,8
+30,Avodah Zarah,Genesis,47
+31,Avodah Zarah,Habakkuk,3
+32,Avodah Zarah,Haggai,1
+33,Avodah Zarah,Hosea,4
+34,Avodah Zarah,I Chronicles,1
+35,Avodah Zarah,I Kings,4
+36,Avodah Zarah,I Samuel,8
+37,Avodah Zarah,II Chronicles,5
+38,Avodah Zarah,II Kings,2
+39,Avodah Zarah,II Samuel,7
+40,Avodah Zarah,Isaiah,40
+41,Avodah Zarah,Jeremiah,5
+42,Avodah Zarah,Job,8
+43,Avodah Zarah,Joshua,9
+44,Avodah Zarah,Judges,8
+45,Avodah Zarah,Lamentations,1
+46,Avodah Zarah,Leviticus,34
+47,Avodah Zarah,Malachi,3
+48,Avodah Zarah,Micah,3
+49,Avodah Zarah,Nahum,2
+50,Avodah Zarah,Numbers,29
+51,Avodah Zarah,Obadiah,2
+52,Avodah Zarah,Proverbs,24
+53,Avodah Zarah,Psalms,71
+54,Avodah Zarah,Zechariah,2
+55,Avodah Zarah,Zephaniah,6
+56,Bava Batra,Amos,5
+57,Bava Batra,Daniel,5
+58,Bava Batra,Deuteronomy,84
+59,Bava Batra,Ecclesiastes,6
+60,Bava Batra,Esther,1
+61,Bava Batra,Exodus,29
+62,Bava Batra,Ezekiel,19
+63,Bava Batra,Ezra,3
+64,Bava Batra,Genesis,58
+65,Bava Batra,Habakkuk,2
+66,Bava Batra,Haggai,1
+67,Bava Batra,Hosea,4
+68,Bava Batra,I Chronicles,15
+69,Bava Batra,I Kings,13
+70,Bava Batra,I Samuel,6
+71,Bava Batra,II Chronicles,2
+72,Bava Batra,II Kings,4
+73,Bava Batra,II Samuel,7
+74,Bava Batra,Isaiah,43
+75,Bava Batra,Jeremiah,22
+76,Bava Batra,Job,70
+77,Bava Batra,Joshua,17
+78,Bava Batra,Judges,13
+79,Bava Batra,Lamentations,1
+80,Bava Batra,Leviticus,48
+81,Bava Batra,Malachi,2
+82,Bava Batra,Nehemiah,3
+83,Bava Batra,Numbers,98
+84,Bava Batra,Obadiah,1
+85,Bava Batra,Proverbs,32
+86,Bava Batra,Psalms,33
+87,Bava Batra,Ruth,7
+88,Bava Batra,Zechariah,7
+89,Bava Batra,Zephaniah,5
+90,Bava Kamma,Amos,1
+91,Bava Kamma,Deuteronomy,108
+92,Bava Kamma,Exodus,258
+93,Bava Kamma,Ezekiel,5
+94,Bava Kamma,Genesis,30
+95,Bava Kamma,Habakkuk,2
+96,Bava Kamma,Hosea,1
+97,Bava Kamma,I Chronicles,2
+98,Bava Kamma,I Kings,6
+99,Bava Kamma,I Samuel,1
+100,Bava Kamma,II Chronicles,4
+101,Bava Kamma,II Kings,2
+102,Bava Kamma,II Samuel,7
+103,Bava Kamma,Isaiah,19
+104,Bava Kamma,Jeremiah,6
+105,Bava Kamma,Job,3
+106,Bava Kamma,Joel,1
+107,Bava Kamma,Judges,3
+108,Bava Kamma,Lamentations,4
+109,Bava Kamma,Leviticus,123
+110,Bava Kamma,Malachi,1
+111,Bava Kamma,Nahum,1
+112,Bava Kamma,Numbers,47
+113,Bava Kamma,Obadiah,1
+114,Bava Kamma,Proverbs,9
+115,Bava Kamma,Psalms,5
+116,Bava Kamma,Zechariah,1
+117,Bava Metzia,Amos,2
+118,Bava Metzia,Daniel,1
+119,Bava Metzia,Deuteronomy,144
+120,Bava Metzia,Ecclesiastes,1
+121,Bava Metzia,Exodus,84
+122,Bava Metzia,Ezekiel,4
+123,Bava Metzia,Ezra,3
+124,Bava Metzia,Genesis,45
+125,Bava Metzia,Habakkuk,1
+126,Bava Metzia,Hosea,1
+127,Bava Metzia,I Kings,4
+128,Bava Metzia,I Samuel,2
+129,Bava Metzia,II Kings,2
+130,Bava Metzia,Isaiah,6
+131,Bava Metzia,Jeremiah,7
+132,Bava Metzia,Job,6
+133,Bava Metzia,Judges,5
+134,Bava Metzia,Lamentations,1
+135,Bava Metzia,Leviticus,117
+136,Bava Metzia,Micah,1
+137,Bava Metzia,Nehemiah,1
+138,Bava Metzia,Numbers,12
+139,Bava Metzia,Obadiah,1
+140,Bava Metzia,Proverbs,20
+141,Bava Metzia,Psalms,17
+142,Bava Metzia,Ruth,3
+143,Bava Metzia,Zephaniah,2
+144,Beitzah,Deuteronomy,10
+145,Beitzah,Exodus,24
+146,Beitzah,Genesis,1
+147,Beitzah,Isaiah,1
+148,Beitzah,Jeremiah,1
+149,Beitzah,Job,1
+150,Beitzah,Judges,1
+151,Beitzah,Leviticus,14
+152,Beitzah,Nehemiah,2
+153,Beitzah,Numbers,4
+154,Beitzah,Proverbs,1
+155,Beitzah,Psalms,4
+156,Bekhorot,Amos,1
+157,Bekhorot,Daniel,1
+158,Bekhorot,Deuteronomy,101
+159,Bekhorot,Ecclesiastes,1
+160,Bekhorot,Exodus,90
+161,Bekhorot,Ezekiel,3
+162,Bekhorot,Genesis,9
+163,Bekhorot,Hosea,1
+164,Bekhorot,I Chronicles,1
+165,Bekhorot,I Samuel,2
+166,Bekhorot,II Samuel,2
+167,Bekhorot,Isaiah,5
+168,Bekhorot,Jeremiah,7
+169,Bekhorot,Job,4
+170,Bekhorot,Jonah,2
+171,Bekhorot,Joshua,4
+172,Bekhorot,Judges,1
+173,Bekhorot,Leviticus,164
+174,Bekhorot,Malachi,1
+175,Bekhorot,Numbers,75
+176,Bekhorot,Proverbs,2
+177,Bekhorot,Psalms,2
+178,Berakhot,Amos,9
+179,Berakhot,Daniel,13
+180,Berakhot,Deuteronomy,139
+181,Berakhot,Ecclesiastes,17
+182,Berakhot,Esther,1
+183,Berakhot,Exodus,95
+184,Berakhot,Ezekiel,25
+185,Berakhot,Genesis,77
+186,Berakhot,Habakkuk,1
+187,Berakhot,Hosea,11
+188,Berakhot,I Chronicles,14
+189,Berakhot,I Kings,21
+190,Berakhot,I Samuel,36
+191,Berakhot,II Chronicles,4
+192,Berakhot,II Kings,13
+193,Berakhot,II Samuel,17
+194,Berakhot,Isaiah,93
+195,Berakhot,Jeremiah,31
+196,Berakhot,Job,21
+197,Berakhot,Joshua,8
+198,Berakhot,Judges,10
+199,Berakhot,Lamentations,5
+200,Berakhot,Leviticus,33
+201,Berakhot,Malachi,3
+202,Berakhot,Micah,4
+203,Berakhot,Nahum,1
+204,Berakhot,Nehemiah,6
+205,Berakhot,Numbers,48
+206,Berakhot,Proverbs,72
+207,Berakhot,Psalms,191
+208,Berakhot,Ruth,1
+209,Berakhot,Zechariah,3
+210,Berakhot,Zephaniah,3
+211,Chagigah,Amos,6
+212,Chagigah,Daniel,5
+213,Chagigah,Deuteronomy,44
+214,Chagigah,Ecclesiastes,10
+215,Chagigah,Esther,1
+216,Chagigah,Exodus,32
+217,Chagigah,Ezekiel,18
+218,Chagigah,Genesis,21
+219,Chagigah,Habakkuk,1
+220,Chagigah,I Chronicles,2
+221,Chagigah,I Kings,3
+222,Chagigah,I Samuel,5
+223,Chagigah,Isaiah,40
+224,Chagigah,Jeremiah,14
+225,Chagigah,Job,14
+226,Chagigah,Judges,2
+227,Chagigah,Lamentations,3
+228,Chagigah,Leviticus,45
+229,Chagigah,Malachi,4
+230,Chagigah,Micah,2
+231,Chagigah,Nahum,1
+232,Chagigah,Numbers,14
+233,Chagigah,Proverbs,15
+234,Chagigah,Psalms,37
+235,Chagigah,Ruth,1
+236,Chagigah,Zechariah,1
+237,Chagigah,Zephaniah,1
+238,Chullin,Amos,3
+239,Chullin,Daniel,6
+240,Chullin,Deuteronomy,224
+241,Chullin,Ecclesiastes,3
+242,Chullin,Esther,1
+243,Chullin,Exodus,49
+244,Chullin,Ezekiel,12
+245,Chullin,Ezra,1
+246,Chullin,Genesis,76
+247,Chullin,Hosea,2
+248,Chullin,I Chronicles,1
+249,Chullin,I Kings,7
+250,Chullin,I Samuel,9
+251,Chullin,II Chronicles,3
+252,Chullin,II Kings,5
+253,Chullin,II Samuel,1
+254,Chullin,Isaiah,14
+255,Chullin,Jeremiah,9
+256,Chullin,Job,14
+257,Chullin,Joel,1
+258,Chullin,Joshua,1
+259,Chullin,Judges,3
+260,Chullin,Lamentations,2
+261,Chullin,Leviticus,348
+262,Chullin,Malachi,1
+263,Chullin,Micah,1
+264,Chullin,Nahum,1
+265,Chullin,Numbers,51
+266,Chullin,Proverbs,23
+267,Chullin,Psalms,20
+268,Chullin,Ruth,1
+269,Chullin,Zechariah,4
+273,Eruvin,Daniel,1
+274,Eruvin,Deuteronomy,22
+275,Eruvin,Ecclesiastes,8
+276,Eruvin,Exodus,27
+277,Eruvin,Ezekiel,10
+278,Eruvin,Ezra,2
+279,Eruvin,Genesis,22
+280,Eruvin,I Chronicles,3
+281,Eruvin,I Kings,4
+282,Eruvin,I Samuel,4
+283,Eruvin,II Chronicles,2
+284,Eruvin,II Kings,2
+285,Eruvin,II Samuel,3
+286,Eruvin,Isaiah,11
+287,Eruvin,Jeremiah,6
+288,Eruvin,Job,6
+289,Eruvin,Jonah,2
+290,Eruvin,Joshua,3
+291,Eruvin,Judges,2
+292,Eruvin,Leviticus,25
+293,Eruvin,Malachi,1
+294,Eruvin,Micah,5
+295,Eruvin,Numbers,26
+296,Eruvin,Proverbs,25
+297,Eruvin,Psalms,19
+298,Eruvin,Zechariah,2
+299,Gittin,Daniel,1
+300,Gittin,Deuteronomy,86
+301,Gittin,Ecclesiastes,7
+302,Gittin,Exodus,27
+303,Gittin,Ezekiel,5
+304,Gittin,Ezra,1
+305,Gittin,Genesis,3
+306,Gittin,Hosea,5
+307,Gittin,I Chronicles,2
+308,Gittin,I Kings,1
+309,Gittin,II Chronicles,1
+310,Gittin,II Kings,5
+311,Gittin,II Samuel,1
+312,Gittin,Isaiah,9
+313,Gittin,Jeremiah,8
+314,Gittin,Job,4
+315,Gittin,Joel,1
+316,Gittin,Jonah,2
+317,Gittin,Joshua,5
+318,Gittin,Judges,5
+319,Gittin,Lamentations,6
+320,Gittin,Leviticus,41
+321,Gittin,Malachi,2
+322,Gittin,Micah,1
+323,Gittin,Nahum,2
+324,Gittin,Numbers,20
+325,Gittin,Obadiah,1
+326,Gittin,Proverbs,12
+327,Gittin,Psalms,23
+328,Gittin,Zechariah,2
+329,Horayot,Deuteronomy,11
+330,Horayot,Ecclesiastes,2
+331,Horayot,Exodus,12
+332,Horayot,Ezra,4
+333,Horayot,Genesis,11
+334,Horayot,Hosea,2
+335,Horayot,I Chronicles,3
+336,Horayot,I Kings,6
+337,Horayot,I Samuel,3
+338,Horayot,II Chronicles,3
+339,Horayot,II Kings,3
+340,Horayot,Isaiah,1
+341,Horayot,Jeremiah,1
+342,Horayot,Judges,3
+343,Horayot,Leviticus,105
+344,Horayot,Malachi,1
+345,Horayot,Numbers,31
+346,Horayot,Proverbs,4
+347,Horayot,Psalms,6
+348,Horayot,Zechariah,1
+349,Keritot,Amos,1
+350,Keritot,Deuteronomy,22
+351,Keritot,Exodus,41
+352,Keritot,Ezekiel,2
+353,Keritot,Ezra,2
+354,Keritot,Genesis,1
+355,Keritot,I Chronicles,1
+356,Keritot,I Kings,1
+357,Keritot,I Samuel,3
+358,Keritot,II Chronicles,4
+359,Keritot,II Kings,1
+360,Keritot,II Samuel,1
+361,Keritot,Isaiah,2
+362,Keritot,Jonah,1
+363,Keritot,Joshua,1
+364,Keritot,Leviticus,234
+365,Keritot,Numbers,44
+366,Keritot,Proverbs,3
+367,Keritot,Psalms,4
+368,Ketubot,Amos,2
+369,Ketubot,Deuteronomy,111
+370,Ketubot,Ecclesiastes,6
+371,Ketubot,Exodus,54
+372,Ketubot,Ezekiel,7
+373,Ketubot,Ezra,2
+374,Ketubot,Genesis,31
+375,Ketubot,Hosea,2
+376,Ketubot,I Chronicles,1
+377,Ketubot,I Kings,1
+378,Ketubot,I Samuel,5
+379,Ketubot,II Chronicles,3
+380,Ketubot,II Kings,4
+381,Ketubot,II Samuel,2
+382,Ketubot,Isaiah,18
+383,Ketubot,Jeremiah,8
+384,Ketubot,Job,7
+385,Ketubot,Joel,1
+386,Ketubot,Joshua,3
+387,Ketubot,Judges,1
+388,Ketubot,Lamentations,1
+389,Ketubot,Leviticus,47
+390,Ketubot,Micah,1
+391,Ketubot,Nehemiah,1
+392,Ketubot,Numbers,23
+393,Ketubot,Proverbs,15
+394,Ketubot,Psalms,22
+395,Ketubot,Ruth,2
+396,Ketubot,Zechariah,1
+397,Kiddushin,Amos,2
+398,Kiddushin,Daniel,3
+399,Kiddushin,Deuteronomy,205
+400,Kiddushin,Ecclesiastes,6
+401,Kiddushin,Exodus,118
+402,Kiddushin,Ezekiel,13
+403,Kiddushin,Ezra,5
+404,Kiddushin,Genesis,25
+405,Kiddushin,Haggai,1
+406,Kiddushin,Hosea,6
+407,Kiddushin,I Chronicles,1
+408,Kiddushin,I Samuel,4
+409,Kiddushin,II Chronicles,1
+410,Kiddushin,II Kings,2
+411,Kiddushin,II Samuel,5
+412,Kiddushin,Isaiah,16
+413,Kiddushin,Jeremiah,18
+414,Kiddushin,Job,2
+415,Kiddushin,Joshua,5
+416,Kiddushin,Lamentations,3
+417,Kiddushin,Leviticus,245
+418,Kiddushin,Malachi,2
+419,Kiddushin,Micah,1
+420,Kiddushin,Nehemiah,5
+421,Kiddushin,Numbers,51
+422,Kiddushin,Proverbs,14
+423,Kiddushin,Psalms,23
+424,Kiddushin,Zechariah,2
+425,Kiddushin,Zephaniah,1
+426,Makkot,Amos,5
+427,Makkot,Deuteronomy,157
+428,Makkot,Ecclesiastes,3
+429,Makkot,Esther,1
+430,Makkot,Exodus,44
+431,Makkot,Ezekiel,1
+432,Makkot,Genesis,16
+433,Makkot,Habakkuk,1
+434,Makkot,Hosea,2
+435,Makkot,I Kings,3
+436,Makkot,I Samuel,5
+437,Makkot,II Samuel,1
+438,Makkot,Isaiah,11
+439,Makkot,Jeremiah,3
+440,Makkot,Joshua,8
+441,Makkot,Judges,3
+442,Makkot,Leviticus,67
+443,Makkot,Malachi,2
+444,Makkot,Micah,2
+445,Makkot,Numbers,57
+446,Makkot,Proverbs,6
+447,Makkot,Psalms,9
+448,Makkot,Ruth,2
+449,Makkot,Zechariah,2
+450,Megillah,Daniel,17
+451,Megillah,Deuteronomy,59
+452,Megillah,Ecclesiastes,3
+453,Megillah,Esther,189
+454,Megillah,Exodus,55
+455,Megillah,Ezekiel,16
+456,Megillah,Ezra,12
+457,Megillah,Genesis,74
+458,Megillah,Habakkuk,3
+459,Megillah,Hosea,4
+460,Megillah,I Chronicles,9
+461,Megillah,I Kings,22
+462,Megillah,I Samuel,26
+463,Megillah,II Chronicles,5
+464,Megillah,II Kings,17
+465,Megillah,II Samuel,8
+466,Megillah,Isaiah,45
+467,Megillah,Jeremiah,20
+468,Megillah,Job,5
+469,Megillah,Joshua,14
+470,Megillah,Judges,7
+471,Megillah,Lamentations,1
+472,Megillah,Leviticus,77
+473,Megillah,Malachi,1
+474,Megillah,Micah,2
+475,Megillah,Nehemiah,10
+476,Megillah,Numbers,40
+477,Megillah,Proverbs,21
+478,Megillah,Psalms,44
+479,Megillah,Ruth,2
+480,Megillah,Zechariah,8
+481,Megillah,Zephaniah,3
+482,Meilah,Deuteronomy,5
+483,Meilah,Exodus,5
+484,Meilah,Genesis,1
+485,Meilah,I Chronicles,1
+486,Meilah,Leviticus,53
+487,Meilah,Numbers,8
+488,Menachot,Amos,1
+489,Menachot,Deuteronomy,115
+490,Menachot,Ecclesiastes,4
+491,Menachot,Esther,1
+492,Menachot,Exodus,136
+493,Menachot,Ezekiel,24
+494,Menachot,Ezra,1
+495,Menachot,Genesis,9
+496,Menachot,Hosea,1
+497,Menachot,I Kings,5
+498,Menachot,I Samuel,4
+499,Menachot,II Chronicles,7
+500,Menachot,II Kings,3
+501,Menachot,II Samuel,3
+502,Menachot,Isaiah,17
+503,Menachot,Jeremiah,9
+504,Menachot,Job,5
+505,Menachot,Joshua,1
+506,Menachot,Judges,1
+507,Menachot,Leviticus,628
+508,Menachot,Malachi,2
+509,Menachot,Nehemiah,3
+510,Menachot,Numbers,194
+511,Menachot,Proverbs,7
+512,Menachot,Psalms,26
+513,Moed Katan,Amos,6
+514,Moed Katan,Daniel,2
+515,Moed Katan,Deuteronomy,18
+516,Moed Katan,Ecclesiastes,2
+517,Moed Katan,Esther,1
+518,Moed Katan,Exodus,7
+519,Moed Katan,Ezekiel,15
+520,Moed Katan,Ezra,2
+521,Moed Katan,Genesis,3
+522,Moed Katan,Habakkuk,1
+523,Moed Katan,Hosea,1
+524,Moed Katan,I Kings,5
+525,Moed Katan,II Chronicles,3
+526,Moed Katan,II Kings,9
+527,Moed Katan,II Samuel,13
+528,Moed Katan,Isaiah,11
+529,Moed Katan,Jeremiah,12
+530,Moed Katan,Job,8
+531,Moed Katan,Joel,2
+532,Moed Katan,Joshua,2
+533,Moed Katan,Judges,4
+534,Moed Katan,Lamentations,5
+535,Moed Katan,Leviticus,38
+536,Moed Katan,Malachi,1
+537,Moed Katan,Nehemiah,1
+538,Moed Katan,Numbers,14
+540,Moed Katan,Proverbs,10
+541,Moed Katan,Psalms,10
+542,Moed Katan,Zechariah,1
+543,Nazir,Daniel,3
+544,Nazir,Deuteronomy,25
+545,Nazir,Exodus,8
+546,Nazir,Ezekiel,1
+547,Nazir,Genesis,12
+548,Nazir,Hosea,2
+549,Nazir,I Samuel,2
+550,Nazir,II Samuel,2
+551,Nazir,Isaiah,2
+552,Nazir,Jeremiah,1
+553,Nazir,Job,1
+554,Nazir,Judges,9
+555,Nazir,Leviticus,115
+556,Nazir,Nehemiah,1
+557,Nazir,Numbers,140
+558,Nazir,Proverbs,5
+559,Nazir,Ruth,1
+560,Nedarim,Amos,1
+561,Nedarim,Daniel,1
+562,Nedarim,Deuteronomy,33
+563,Nedarim,Ecclesiastes,9
+564,Nedarim,Exodus,31
+565,Nedarim,Ezekiel,9
+566,Nedarim,Ezra,1
+567,Nedarim,Genesis,28
+568,Nedarim,Habakkuk,2
+569,Nedarim,I Kings,2
+570,Nedarim,I Samuel,4
+571,Nedarim,II Chronicles,3
+572,Nedarim,II Kings,1
+573,Nedarim,II Samuel,7
+574,Nedarim,Isaiah,5
+575,Nedarim,Jeremiah,12
+576,Nedarim,Job,3
+577,Nedarim,Jonah,3
+578,Nedarim,Joshua,3
+579,Nedarim,Lamentations,3
+580,Nedarim,Leviticus,35
+581,Nedarim,Malachi,3
+582,Nedarim,Nehemiah,1
+583,Nedarim,Numbers,85
+584,Nedarim,Proverbs,15
+585,Nedarim,Psalms,20
+586,Nedarim,Ruth,5
+587,Niddah,Amos,3
+588,Niddah,Daniel,1
+589,Niddah,Deuteronomy,27
+590,Niddah,Ecclesiastes,2
+591,Niddah,Esther,1
+592,Niddah,Exodus,10
+593,Niddah,Ezekiel,6
+594,Niddah,Genesis,25
+595,Niddah,Habakkuk,1
+596,Niddah,Haggai,1
+597,Niddah,I Chronicles,1
+598,Niddah,I Samuel,3
+599,Niddah,II Kings,2
+600,Niddah,II Samuel,2
+601,Niddah,Isaiah,10
+602,Niddah,Jeremiah,5
+603,Niddah,Job,12
+604,Niddah,Judges,2
+605,Niddah,Leviticus,213
+606,Niddah,Micah,2
+607,Niddah,Numbers,25
+608,Niddah,Proverbs,5
+609,Niddah,Psalms,24
+610,Niddah,Ruth,2
+611,Niddah,Zechariah,1
+612,Pesachim,Amos,4
+613,Pesachim,Daniel,4
+614,Pesachim,Deuteronomy,98
+615,Pesachim,Ecclesiastes,3
+616,Pesachim,Esther,3
+617,Pesachim,Exodus,186
+618,Pesachim,Ezekiel,5
+619,Pesachim,Genesis,47
+620,Pesachim,Habakkuk,1
+621,Pesachim,Haggai,6
+622,Pesachim,Hosea,17
+623,Pesachim,I Chronicles,7
+624,Pesachim,I Kings,10
+625,Pesachim,I Samuel,8
+626,Pesachim,II Chronicles,4
+627,Pesachim,II Kings,8
+628,Pesachim,II Samuel,7
+629,Pesachim,Isaiah,25
+630,Pesachim,Jeremiah,4
+631,Pesachim,Job,10
+632,Pesachim,Joshua,1
+633,Pesachim,Judges,10
+634,Pesachim,Lamentations,2
+635,Pesachim,Leviticus,144
+636,Pesachim,Micah,3
+637,Pesachim,Numbers,95
+638,Pesachim,Proverbs,16
+639,Pesachim,Psalms,79
+640,Pesachim,Zechariah,7
+641,Pesachim,Zephaniah,3
+708,Rosh Hashanah,Amos,2
+709,Rosh Hashanah,Daniel,4
+710,Rosh Hashanah,Deuteronomy,64
+711,Rosh Hashanah,Ecclesiastes,3
+712,Rosh Hashanah,Esther,4
+713,Rosh Hashanah,Exodus,44
+714,Rosh Hashanah,Ezekiel,7
+715,Rosh Hashanah,Ezra,10
+716,Rosh Hashanah,Genesis,21
+717,Rosh Hashanah,Haggai,4
+718,Rosh Hashanah,Hosea,5
+719,Rosh Hashanah,I Chronicles,3
+720,Rosh Hashanah,I Kings,12
+721,Rosh Hashanah,I Samuel,10
+722,Rosh Hashanah,II Chronicles,2
+723,Rosh Hashanah,II Kings,2
+724,Rosh Hashanah,II Samuel,2
+725,Rosh Hashanah,Isaiah,17
+726,Rosh Hashanah,Jeremiah,6
+727,Rosh Hashanah,Job,5
+728,Rosh Hashanah,Joel,1
+729,Rosh Hashanah,Jonah,1
+730,Rosh Hashanah,Joshua,3
+731,Rosh Hashanah,Judges,1
+732,Rosh Hashanah,Lamentations,2
+733,Rosh Hashanah,Leviticus,62
+734,Rosh Hashanah,Malachi,2
+735,Rosh Hashanah,Micah,6
+736,Rosh Hashanah,Nehemiah,12
+737,Rosh Hashanah,Numbers,41
+738,Rosh Hashanah,Proverbs,7
+739,Rosh Hashanah,Psalms,57
+740,Rosh Hashanah,Zechariah,7
+741,Sanhedrin,Amos,10
+742,Sanhedrin,Daniel,29
+743,Sanhedrin,Deuteronomy,323
+744,Sanhedrin,Ecclesiastes,11
+745,Sanhedrin,Esther,4
+746,Sanhedrin,Exodus,232
+747,Sanhedrin,Ezekiel,43
+748,Sanhedrin,Ezra,6
+749,Sanhedrin,Genesis,194
+750,Sanhedrin,Habakkuk,6
+751,Sanhedrin,Haggai,2
+752,Sanhedrin,Hosea,14
+753,Sanhedrin,I Chronicles,15
+754,Sanhedrin,I Kings,83
+755,Sanhedrin,I Samuel,23
+756,Sanhedrin,II Chronicles,32
+757,Sanhedrin,II Kings,62
+758,Sanhedrin,II Samuel,59
+759,Sanhedrin,Isaiah,156
+760,Sanhedrin,Jeremiah,61
+761,Sanhedrin,Job,46
+762,Sanhedrin,Joel,2
+763,Sanhedrin,Jonah,2
+764,Sanhedrin,Joshua,38
+765,Sanhedrin,Judges,10
+766,Sanhedrin,Lamentations,17
+767,Sanhedrin,Leviticus,284
+768,Sanhedrin,Malachi,8
+769,Sanhedrin,Micah,3
+770,Sanhedrin,Nahum,1
+771,Sanhedrin,Nehemiah,5
+772,Sanhedrin,Numbers,179
+773,Sanhedrin,Obadiah,3
+774,Sanhedrin,Proverbs,96
+775,Sanhedrin,Psalms,139
+776,Sanhedrin,Ruth,4
+777,Sanhedrin,Zechariah,21
+778,Sanhedrin,Zephaniah,5
+779,Shabbat,Amos,12
+780,Shabbat,Daniel,3
+781,Shabbat,Deuteronomy,66
+782,Shabbat,Ecclesiastes,35
+783,Shabbat,Esther,2
+784,Shabbat,Exodus,125
+785,Shabbat,Ezekiel,17
+786,Shabbat,Ezra,1
+787,Shabbat,Genesis,52
+788,Shabbat,Habakkuk,3
+789,Shabbat,Hosea,5
+790,Shabbat,I Chronicles,3
+791,Shabbat,I Kings,15
+792,Shabbat,I Samuel,17
+793,Shabbat,II Chronicles,3
+794,Shabbat,II Kings,8
+795,Shabbat,II Samuel,15
+796,Shabbat,Isaiah,77
+797,Shabbat,Jeremiah,25
+798,Shabbat,Job,17
+799,Shabbat,Joel,1
+800,Shabbat,Joshua,5
+801,Shabbat,Judges,5
+802,Shabbat,Lamentations,2
+803,Shabbat,Leviticus,121
+804,Shabbat,Malachi,6
+805,Shabbat,Micah,1
+806,Shabbat,Nehemiah,1
+807,Shabbat,Numbers,68
+808,Shabbat,Proverbs,35
+809,Shabbat,Psalms,49
+810,Shabbat,Ruth,9
+811,Shabbat,Zechariah,1
+812,Shabbat,Zephaniah,2
+813,Shevuot,Daniel,3
+814,Shevuot,Deuteronomy,31
+815,Shevuot,Ecclesiastes,1
+816,Shevuot,Esther,1
+817,Shevuot,Exodus,51
+818,Shevuot,Ezekiel,2
+819,Shevuot,Genesis,8
+820,Shevuot,Hosea,2
+821,Shevuot,I Kings,2
+822,Shevuot,I Samuel,4
+823,Shevuot,II Chronicles,2
+824,Shevuot,II Kings,2
+825,Shevuot,Isaiah,4
+826,Shevuot,Jeremiah,4
+827,Shevuot,Job,2
+828,Shevuot,Joshua,1
+829,Shevuot,Judges,3
+830,Shevuot,Lamentations,1
+831,Shevuot,Leviticus,171
+832,Shevuot,Nehemiah,3
+833,Shevuot,Numbers,43
+834,Shevuot,Proverbs,3
+835,Shevuot,Psalms,12
+836,Shevuot,Zechariah,2
+837,Sotah,Amos,3
+838,Sotah,Daniel,5
+839,Sotah,Deuteronomy,213
+840,Sotah,Ecclesiastes,3
+841,Sotah,Esther,2
+842,Sotah,Exodus,92
+843,Sotah,Ezekiel,11
+844,Sotah,Ezra,1
+845,Sotah,Genesis,95
+846,Sotah,Habakkuk,3
+847,Sotah,Hosea,5
+848,Sotah,I Chronicles,10
+849,Sotah,I Kings,5
+850,Sotah,I Samuel,15
+851,Sotah,II Chronicles,2
+852,Sotah,II Kings,13
+853,Sotah,II Samuel,23
+854,Sotah,Isaiah,45
+855,Sotah,Jeremiah,17
+856,Sotah,Job,25
+857,Sotah,Joel,1
+858,Sotah,Joshua,27
+859,Sotah,Judges,33
+860,Sotah,Lamentations,3
+861,Sotah,Leviticus,85
+862,Sotah,Malachi,2
+863,Sotah,Micah,2
+864,Sotah,Nehemiah,4
+865,Sotah,Numbers,194
+866,Sotah,Proverbs,33
+867,Sotah,Psalms,59
+868,Sotah,Ruth,2
+869,Sotah,Zechariah,1
+870,Sotah,Zephaniah,1
+871,Sukkah,Amos,1
+872,Sukkah,Daniel,2
+873,Sukkah,Deuteronomy,43
+874,Sukkah,Ecclesiastes,2
+875,Sukkah,Esther,1
+876,Sukkah,Exodus,26
+877,Sukkah,Ezekiel,9
+878,Sukkah,Genesis,9
+879,Sukkah,Hosea,4
+880,Sukkah,I Chronicles,1
+881,Sukkah,I Kings,3
+882,Sukkah,II Chronicles,2
+883,Sukkah,II Kings,6
+884,Sukkah,II Samuel,2
+885,Sukkah,Isaiah,18
+886,Sukkah,Jeremiah,5
+887,Sukkah,Job,4
+888,Sukkah,Joel,3
+889,Sukkah,Leviticus,62
+890,Sukkah,Malachi,2
+891,Sukkah,Micah,4
+892,Sukkah,Nehemiah,2
+893,Sukkah,Numbers,28
+894,Sukkah,Proverbs,9
+895,Sukkah,Psalms,36
+896,Sukkah,Zechariah,7
+897,Taanit,Amos,3
+898,Taanit,Daniel,4
+899,Taanit,Deuteronomy,33
+900,Taanit,Ecclesiastes,10
+901,Taanit,Esther,1
+902,Taanit,Exodus,10
+903,Taanit,Ezekiel,6
+904,Taanit,Ezra,3
+905,Taanit,Genesis,29
+906,Taanit,Habakkuk,2
+907,Taanit,Hosea,7
+908,Taanit,I Chronicles,4
+909,Taanit,I Kings,9
+910,Taanit,I Samuel,8
+911,Taanit,II Chronicles,3
+912,Taanit,II Kings,6
+913,Taanit,II Samuel,3
+914,Taanit,Isaiah,31
+915,Taanit,Jeremiah,25
+916,Taanit,Job,23
+917,Taanit,Joel,5
+918,Taanit,Jonah,8
+919,Taanit,Joshua,5
+920,Taanit,Judges,2
+921,Taanit,Lamentations,9
+922,Taanit,Leviticus,9
+923,Taanit,Malachi,4
+924,Taanit,Micah,1
+925,Taanit,Nehemiah,4
+926,Taanit,Numbers,39
+927,Taanit,Proverbs,23
+928,Taanit,Psalms,41
+929,Taanit,Zechariah,4
+930,Tamid,Deuteronomy,6
+931,Tamid,Exodus,1
+932,Tamid,Ezekiel,3
+933,Tamid,Genesis,4
+934,Tamid,I Chronicles,1
+935,Tamid,I Kings,2
+936,Tamid,Isaiah,1
+937,Tamid,Lamentations,1
+938,Tamid,Leviticus,7
+939,Tamid,Numbers,9
+940,Tamid,Proverbs,4
+941,Tamid,Psalms,19
+942,Temurah,Deuteronomy,50
+943,Temurah,Exodus,17
+944,Temurah,Ezekiel,6
+945,Temurah,Ezra,3
+946,Temurah,Genesis,1
+947,Temurah,I Chronicles,2
+948,Temurah,II Samuel,1
+949,Temurah,Isaiah,1
+950,Temurah,Job,1
+951,Temurah,Jonah,1
+952,Temurah,Joshua,7
+953,Temurah,Judges,4
+954,Temurah,Leviticus,153
+955,Temurah,Numbers,40
+956,Temurah,Proverbs,4
+957,Temurah,Psalms,6
+958,Yevamot,Amos,1
+959,Yevamot,Daniel,1
+960,Yevamot,Deuteronomy,208
+961,Yevamot,Ecclesiastes,7
+962,Yevamot,Esther,3
+963,Yevamot,Exodus,50
+964,Yevamot,Ezekiel,8
+965,Yevamot,Ezra,2
+966,Yevamot,Genesis,48
+967,Yevamot,Hosea,4
+968,Yevamot,I Chronicles,4
+969,Yevamot,I Kings,7
+970,Yevamot,I Samuel,11
+971,Yevamot,II Chronicles,3
+972,Yevamot,II Kings,5
+973,Yevamot,II Samuel,11
+974,Yevamot,Isaiah,18
+975,Yevamot,Jeremiah,9
+976,Yevamot,Job,5
+977,Yevamot,Jonah,2
+978,Yevamot,Joshua,9
+979,Yevamot,Judges,7
+980,Yevamot,Lamentations,6
+981,Yevamot,Leviticus,226
+982,Yevamot,Numbers,47
+983,Yevamot,Proverbs,16
+984,Yevamot,Psalms,23
+985,Yevamot,Ruth,6
+986,Yevamot,Zechariah,1
+987,Yevamot,Zephaniah,3
+988,Yoma,Amos,2
+989,Yoma,Daniel,15
+990,Yoma,Deuteronomy,50
+991,Yoma,Ecclesiastes,9
+992,Yoma,Exodus,113
+993,Yoma,Ezekiel,28
+994,Yoma,Genesis,41
+995,Yoma,Habakkuk,1
+996,Yoma,Haggai,1
+997,Yoma,Hosea,9
+998,Yoma,I Chronicles,4
+999,Yoma,I Kings,23
+1000,Yoma,I Samuel,27
+1001,Yoma,II Chronicles,7
+1002,Yoma,II Kings,5
+1003,Yoma,II Samuel,9
+1004,Yoma,Isaiah,23
+1005,Yoma,Jeremiah,15
+1006,Yoma,Job,10
+1007,Yoma,Jonah,1
+1008,Yoma,Judges,5
+1009,Yoma,Lamentations,5
+1010,Yoma,Leviticus,318
+1011,Yoma,Micah,3
+1012,Yoma,Nahum,2
+1013,Yoma,Nehemiah,6
+1014,Yoma,Numbers,89
+1015,Yoma,Proverbs,29
+1016,Yoma,Psalms,44
+1017,Yoma,Zechariah,5
+1018,Zevachim,Amos,1
+1019,Zevachim,Deuteronomy,85
+1020,Zevachim,Ecclesiastes,1
+1021,Zevachim,Esther,1
+1022,Zevachim,Exodus,134
+1023,Zevachim,Ezekiel,11
+1024,Zevachim,Ezra,4
+1025,Zevachim,Genesis,25
+1026,Zevachim,Hosea,1
+1027,Zevachim,I Chronicles,7
+1028,Zevachim,I Kings,7
+1029,Zevachim,I Samuel,8
+1030,Zevachim,II Chronicles,4
+1031,Zevachim,II Kings,1
+1032,Zevachim,II Samuel,3
+1033,Zevachim,Isaiah,4
+1034,Zevachim,Jeremiah,3
+1035,Zevachim,Job,3
+1036,Zevachim,Joshua,17
+1037,Zevachim,Judges,4
+1038,Zevachim,Leviticus,753
+1039,Zevachim,Malachi,1
+1040,Zevachim,Numbers,101
+1041,Zevachim,Proverbs,3
+1042,Zevachim,Psalms,16
+1043,Zevachim,Zechariah,1
