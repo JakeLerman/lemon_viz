@@ -1,4 +1,4 @@
-const MARGIN = { LEFT: 200, RIGHT: 50, TOP: 70, BOTTOM: 50 }
+const MARGIN = { LEFT: 0, RIGHT: 200, TOP: 70, BOTTOM: 50 }
 const WIDTH = 2000 - MARGIN.LEFT - MARGIN.RIGHT
 const HEIGHT = 1200 - MARGIN.TOP - MARGIN.BOTTOM
 
@@ -35,8 +35,8 @@ data.forEach(element => {
     .range([0, WIDTH]);
   svg
     .append("g")
-    .attr("transform", `translate(0,${HEIGHT})`)
-    .call(d3.axisBottom(xAxis));
+    .attr("transform", `translate(0,-10)`)
+    .call(d3.axisTop(xAxis));
  
   // Y Axis
   const yAxis = d3
@@ -44,24 +44,35 @@ data.forEach(element => {
     .domain(data.map((d) => d["name"]))
     .range([HEIGHT, 0])
     .paddingInner(0.3);
-  svg.append("g").call(d3.axisLeft(yAxis))
+  // svg.append("g").call(d3.axisLeft(yAxis))
+
+  const locations = [...new Set(data.map(d=>d.location))]
+
+  const cScale = d3.scaleOrdinal()
+    .domain(locations)
+    .range(colors)
  
-  svg.selectAll("bars")
+  const bars = svg.selectAll("bars")
   .data(data)
   .join("rect")
     .attr("x", d => xAxis(d['birth']))
     .attr("y", d => yAxis(d['name']))
     .attr("width", d => xAxis(d['death']) - xAxis(d['birth']))
     .attr("height", yAxis.bandwidth())
-    .attr("fill", "#338770")
+    .attr("fill", d=> cScale(d.location))
+    .join("a")
+    .attr("href", d => d.link)
+    .attr("target", d => d.link)
     .append("title")
     .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
+
     // .attr("opacity",d=> cScale(d.Perc_Left))
  
-  // svg.selectAll("labels")
-  //   .data(data)
-  //   .join("text")
-  //   .attr("x", d => xAxis(d['birth']))
-  //   .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
-  //   .text(d => d.name)
+  svg.selectAll("labels")
+    .data(data)
+    .join("text")
+    .attr("x", d => xAxis(d['death']))
+    .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
+    .text(d => d.name)
+ 
   })
