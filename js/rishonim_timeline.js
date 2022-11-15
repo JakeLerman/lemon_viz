@@ -1,5 +1,5 @@
-const MARGIN = { LEFT: 0, RIGHT: 200, TOP: 70, BOTTOM: 50 }
-const WIDTH = 2000 - MARGIN.LEFT - MARGIN.RIGHT
+const MARGIN = { LEFT: 50, RIGHT: 200, TOP: 70, BOTTOM: 50 }
+const WIDTH = 1900 - MARGIN.LEFT - MARGIN.RIGHT
 const HEIGHT = 1200 - MARGIN.TOP - MARGIN.BOTTOM
 
 const svg = d3.select("#chart-area").append("svg")
@@ -12,7 +12,6 @@ const svg = d3.select("#chart-area").append("svg")
 const colors = d3.schemePastel1
  
 d3.csv("data/Rishonim.csv").then(data => {
-  console.log(data)
 
   // Data Pre-Processing
 data.forEach(element => {
@@ -20,7 +19,6 @@ data.forEach(element => {
     element['death'] = Number(element['death'])
     return data
   })
-
  
   // Sort data
   data.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
@@ -36,7 +34,7 @@ data.forEach(element => {
   svg
     .append("g")
     .attr("transform", `translate(0,-10)`)
-    .call(d3.axisTop(xAxis));
+    .call(d3.axisTop(xAxis).tickFormat(d3.format("d")));
  
   // Y Axis
   const yAxis = d3
@@ -52,7 +50,7 @@ data.forEach(element => {
     .domain(locations)
     .range(colors)
  
-  const bars = svg.selectAll("bars")
+  svg.selectAll("bars")
   .data(data)
   .join("a")
   .attr("href", d => d.link)
@@ -74,5 +72,13 @@ data.forEach(element => {
     .attr("x", d => xAxis(d['death']))
     .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
     .text(d => d.name)
+    .style("fill", d => cScale(d.location))
+
+    svg.append("g")
+  .attr("class", "legend")
+  .attr("transform", `translate(${WIDTH},10)`);
+  const legend = d3.legendColor().scale(cScale)
+  svg.select(".legend")
+  .call(legend);
  
   })
