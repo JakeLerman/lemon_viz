@@ -5,8 +5,10 @@ const HEIGHT = 1200 - MARGIN.TOP - MARGIN.BOTTOM
 const svg = d3.select("#chart-area").append("svg")
   .attr("width", WIDTH + MARGIN.LEFT + MARGIN.RIGHT)
   .attr("height", HEIGHT + MARGIN.TOP + MARGIN.BOTTOM)
-.append("g")
-.attr("transform", `translate(${MARGIN.LEFT},${MARGIN.TOP})`);
+  .attr("viewBox", [0, 0, WIDTH + MARGIN.LEFT + MARGIN.RIGHT, HEIGHT + MARGIN.TOP + MARGIN.BOTTOM])
+  .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
+  .append("g")
+  .attr("transform", `translate(${MARGIN.LEFT},${MARGIN.TOP})`);
 
 // Lloyds Colour Scheme
 const colors = d3.schemePastel1
