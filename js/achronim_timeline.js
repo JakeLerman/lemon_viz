@@ -1,6 +1,6 @@
-const MARGIN = { LEFT: 50, RIGHT: 200, TOP: 70, BOTTOM: 50 }
-const WIDTH = 1900 - MARGIN.LEFT - MARGIN.RIGHT
-const HEIGHT = 1200 - MARGIN.TOP - MARGIN.BOTTOM
+const MARGIN = { LEFT: 50, RIGHT: 200, TOP: 110, BOTTOM: 50 }
+const WIDTH = 1200 - MARGIN.LEFT - MARGIN.RIGHT
+const HEIGHT = 2000 - MARGIN.TOP - MARGIN.BOTTOM
 
 const svg = d3.select("#chart-area").append("svg")
   .attr("width", WIDTH + MARGIN.LEFT + MARGIN.RIGHT)
@@ -12,17 +12,6 @@ const svg = d3.select("#chart-area").append("svg")
 
 // Lloyds Colour Scheme
 const colors = d3.schemePastel1
-
-// // Slider
-// $("#date-slider").slider({
-// 	min: 1475,
-// 	max: 1939,
-//   range: true,
-// 	step: 1,
-// 	slide: (event, ui) => {
-// 		console.log(ui.value)
-// 	}
-// })
  
 d3.csv("data/Achronim_I.csv").then(data => {
 
@@ -62,6 +51,29 @@ data.forEach(element => {
   const cScale = d3.scaleOrdinal()
     .domain(locations)
     .range(colors)
+  
+    // Slider
+  // $("#date-slider").slider({
+  // 	min: 1475,
+  // 	max: 1939,
+  //   range: true,
+  // 	step: 1,
+  // 	slide: (event, ui) => {
+  // 		console.log(ui.value)
+  // 	}
+  // })
+    // Brush
+    const brush = d3.brushX()
+      .handleSize(10)
+			.extent([[0, 0], [WIDTH, 100]])
+			// .on("brush", brushed)
+
+		// append brush component
+		// d3.select("svg")
+    svg.append("g")
+    .attr("transform", `translate(0,${-MARGIN.TOP})`)
+			.attr("class", "brush")
+			.call(brush)
  
   svg.selectAll("bars")
   .data(data)
