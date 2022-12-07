@@ -12,6 +12,17 @@ const svg = d3.select("#chart-area").append("svg")
 
 // Lloyds Colour Scheme
 const colors = d3.schemePastel1
+
+// // Slider
+// $("#date-slider").slider({
+// 	min: 1475,
+// 	max: 1939,
+//   range: true,
+// 	step: 1,
+// 	slide: (event, ui) => {
+// 		console.log(ui.value)
+// 	}
+// })
  
 d3.csv("data/Achronim_I.csv").then(data => {
 
@@ -74,7 +85,7 @@ data.forEach(element => {
     .attr("x", d => xAxis(d['death']))
     .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
     .text(d => d.name)
-    .style("fill", d => cScale("test_1"))
+    // .style("fill", d => d.location)
     .style("font-size",9)
     .style("font-weight","bold")
 
