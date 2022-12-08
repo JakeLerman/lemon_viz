@@ -52,24 +52,13 @@ data.forEach(element => {
     .domain(locations)
     .range(colors)
   
-    // Slider
-  // $("#date-slider").slider({
-  // 	min: 1475,
-  // 	max: 1939,
-  //   range: true,
-  // 	step: 1,
-  // 	slide: (event, ui) => {
-  // 		console.log(ui.value)
-  // 	}
-  // })
     // Brush
     const brush = d3.brushX()
       .handleSize(10)
 			.extent([[0, 0], [WIDTH, 100]])
-			// .on("brush", brushed)
+			.on("brush", brushed)
 
 		// append brush component
-		// d3.select("svg")
     svg.append("g")
     .attr("transform", `translate(0,${-MARGIN.TOP})`)
 			.attr("class", "brush")
@@ -101,6 +90,18 @@ data.forEach(element => {
     .style("font-size",9)
     .style("font-weight","bold")
 
+
+  function brushed(event) {
+    const selection = event.selection;
+    if (selection === null) {
+      console.log("null")
+    } else {
+      const [x0, x1] = selection.map(xAxis.invert);
+      console.log(x0, x1)
+    }
+  }
+
+  // Legend
   //   svg.append("g")
   // .attr("class", "legend")
   // .attr("transform", `translate(${WIDTH},10)`);
@@ -109,3 +110,4 @@ data.forEach(element => {
   // .call(legend);
  
   })
+
