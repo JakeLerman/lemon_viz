@@ -1,3 +1,4 @@
+// Global Variables
 const MARGIN = { LEFT: 50, RIGHT: 200, TOP: 110, BOTTOM: 50 }
 const WIDTH = 1200 - MARGIN.LEFT - MARGIN.RIGHT
 const HEIGHT = 2000 - MARGIN.TOP - MARGIN.BOTTOM
@@ -10,63 +11,129 @@ const svg = d3.select("#chart-area").append("svg")
   .append("g")
   .attr("transform", `translate(${MARGIN.LEFT},${MARGIN.TOP})`);
 
-// Lloyds Colour Scheme
-const colors = d3.schemePastel1
+let data
  
-d3.csv("data/Achronim_I.csv").then(data => {
-
-  // Data Pre-Processing
-data.forEach(element => {
-    element['birth'] = Number(element['birth'])
-    element['death'] = Number(element['death'])
-    return data
-  })
- 
-  // Sort data
-  data.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
- 
-  // X axis
-  const xAxis = d3
-    .scaleLinear()
-    .domain([
-      d3.min(data, (d) => d["birth"]),
-      d3.max(data, (d) => d["death"]),
-    ])
-    .range([0, WIDTH]);
-  svg
-    .append("g")
-    .attr("transform", `translate(0,-10)`)
-    .call(d3.axisTop(xAxis).tickFormat(d3.format("d")));
- 
-  // Y Axis
-  const yAxis = d3
+// Scales/Axis
+const xAxis = d3
+.scaleLinear()
+.range([0, WIDTH]);
+const yAxis = d3
     .scaleBand()
-    .domain(data.map((d) => d["name"]))
     .range([HEIGHT, 0])
     .paddingInner(0.3);
-  // svg.append("g").call(d3.axisLeft(yAxis))
-
-  const locations = [...new Set(data.map(d=>d.location))]
-
-  const cScale = d3.scaleOrdinal()
-    .domain(locations)
+const colors = d3.schemePastel1
+const cScale = d3.scaleOrdinal()
     .range(colors)
-  
-    // Brush
-    const brush = d3.brushX()
-      .handleSize(10)
-			.extent([[0, 0], [WIDTH, 100]])
-			.on("brush", brushed)
 
-		// append brush component
-    svg.append("g")
-    .attr("transform", `translate(0,${-MARGIN.TOP})`)
-			.attr("class", "brush")
-			.call(brush)
- 
-  svg.selectAll("bars")
+// Brush
+const brush = d3.brushX()
+    .handleSize(10)
+    .extent([[0, 0], [WIDTH, 100]])
+    .on("brush", brushed)
+
+// Load Data
+d3.csv("data/Achronim_I.csv").then(rawdata => {
+    // Data Pre-Processing
+    rawdata.forEach(element => {
+      element['birth'] = Number(element['birth'])
+      element['death'] = Number(element['death'])
+      return rawdata
+    })
+    // Sort data
+    data = rawdata.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
+    
+    // init Viz
+    initVis()
+})
+
+function initVis(){
+  // X axis
+  xAxis
+  .domain([
+    d3.min(data, (d) => d["birth"]),
+    d3.max(data, (d) => d["death"]),
+  ]);
+svg
+  .append("g")
+  .attr("transform", `translate(0,-10)`)
+  .call(d3.axisTop(xAxis).tickFormat(d3.format("d")));
+
+// Y Axis
+yAxis.domain(data.map((d) => d["name"]))
+// svg.append("g").call(d3.axisLeft(yAxis))
+
+const locations = [...new Set(data.map(d=>d.location))]
+
+// Color
+cScale
+  .domain(locations)
+
+// Brush
+svg.append("g")
+.attr("transform", `translate(0,${-MARGIN.TOP})`)
+  .attr("class", "brush")
+  .call(brush)
+
+svg.selectAll("bars")
+.data(data)
+.join("a")
+.attr("href", d => d.link)
+.attr("target", d => d.link)
+.append("rect")
+  .attr("x", d => xAxis(d['birth']))
+  .attr("y", d => yAxis(d['name']))
+  .attr("width", d => xAxis(d['death']) - xAxis(d['birth']))
+  .attr("height", yAxis.bandwidth())
+  .attr("fill", cScale("test")) //d=> cScale(d.location)
+  .append("title")
+  // .text(d => d.description)
+  .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
+  // .attr("opacity",d=> cScale(d.Perc_Left))
+
+svg.selectAll("labels")
   .data(data)
-  .join("a")
+  .join("text")
+  .attr("x", d => xAxis(d['death']))
+  .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
+  .text(d => d.name)
+  // .style("fill", d => d.location)
+  .style("font-size",9)
+  .style("font-weight","bold")
+
+    // Legend
+  //   svg.append("g")
+  // .attr("class", "legend")
+  // .attr("transform", `translate(${WIDTH},10)`);
+  // const legend = d3.legendColor().scale(cScale)
+  // svg.select(".legend")
+  // .call(legend);
+
+  }
+
+  function brushed(event) {
+    const selection = event.selection;
+    if (selection === null) {
+      console.log("null")
+    } else {
+      const [x0, x1] = selection.map(xAxis.invert);
+      console.log(x0, x1)
+      update(x0,x1)
+    }
+  }
+
+  function update(x0,x1) {
+    const filteredData = data.filter(row => row.birth > x0 && row.death < x1)
+    const t = d3.transition()
+		.duration(2000)
+
+    console.log(svg.selectAll("bars"))
+	
+    // JOIN new data with old elements.
+	svg.selectAll("a")
+		.data(filteredData)
+    .join(
+      function(enter){
+      return enter.append("a")
   .attr("href", d => d.link)
   .attr("target", d => d.link)
   .append("rect")
@@ -77,37 +144,10 @@ data.forEach(element => {
     .attr("fill", cScale("test")) //d=> cScale(d.location)
     .append("title")
     // .text(d => d.description)
-    .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
-    // .attr("opacity",d=> cScale(d.Perc_Left))
- 
-  svg.selectAll("labels")
-    .data(data)
-    .join("text")
-    .attr("x", d => xAxis(d['death']))
-    .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
-    .text(d => d.name)
-    // .style("fill", d => d.location)
-    .style("font-size",9)
-    .style("font-weight","bold")
-
-
-  function brushed(event) {
-    const selection = event.selection;
-    if (selection === null) {
-      console.log("null")
-    } else {
-      const [x0, x1] = selection.map(xAxis.invert);
-      console.log(x0, x1)
-    }
+    .text(d => d.name + ': ' + d.birth + ' - ' + d.death)}
+    ,
+  function(exit) {
+    return exit.remove();
   }
-
-  // Legend
-  //   svg.append("g")
-  // .attr("class", "legend")
-  // .attr("transform", `translate(${WIDTH},10)`);
-  // const legend = d3.legendColor().scale(cScale)
-  // svg.select(".legend")
-  // .call(legend);
- 
-  })
-
+    )
+  }
