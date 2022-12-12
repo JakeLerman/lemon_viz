@@ -25,11 +25,6 @@ const colors = d3.schemePastel1
 const cScale = d3.scaleOrdinal()
     .range(colors)
 
-// Brush
-const brush = d3.brushX()
-    .handleSize(10)
-    .extent([[0, 0], [WIDTH, 100]])
-    .on("brush", brushed)
 
 // Load Data
 d3.csv("data/Achronim_I.csv").then(rawdata => {
@@ -41,9 +36,14 @@ d3.csv("data/Achronim_I.csv").then(rawdata => {
     })
     // Sort data
     data = rawdata.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
+
+    $("#search").autocomplete({source: data.map(d=> d.name)})
     
     // init Viz
     initVis()
+
+    // Add bars for initial run
+    update()
 })
 
 function initVis(){
@@ -68,37 +68,6 @@ const locations = [...new Set(data.map(d=>d.location))]
 cScale
   .domain(locations)
 
-// Brush
-svg.append("g")
-.attr("transform", `translate(0,${-MARGIN.TOP})`)
-  .attr("class", "brush")
-  .call(brush)
-
-svg.selectAll("bars")
-.data(data)
-.join("a")
-.attr("href", d => d.link)
-.attr("target", d => d.link)
-.append("rect")
-  .attr("x", d => xAxis(d['birth']))
-  .attr("y", d => yAxis(d['name']))
-  .attr("width", d => xAxis(d['death']) - xAxis(d['birth']))
-  .attr("height", yAxis.bandwidth())
-  .attr("fill", cScale("test")) //d=> cScale(d.location)
-  .append("title")
-  // .text(d => d.description)
-  .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
-  // .attr("opacity",d=> cScale(d.Perc_Left))
-
-svg.selectAll("labels")
-  .data(data)
-  .join("text")
-  .attr("x", d => xAxis(d['death']))
-  .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
-  .text(d => d.name)
-  // .style("fill", d => d.location)
-  .style("font-size",9)
-  .style("font-weight","bold")
 
     // Legend
   //   svg.append("g")
@@ -110,30 +79,15 @@ svg.selectAll("labels")
 
   }
 
-  function brushed(event) {
-    const selection = event.selection;
-    if (selection === null) {
-      console.log("null")
-    } else {
-      const [x0, x1] = selection.map(xAxis.invert);
-      console.log(x0, x1)
-      update(x0,x1)
-    }
-  }
 
-  function update(x0,x1) {
-    const filteredData = data.filter(row => row.birth > x0 && row.death < x1)
-    const t = d3.transition()
-		.duration(2000)
+function update() {
+  // const filteredData = data.filter(row => row.birth > x0 && row.death < x1)
 
-    console.log(svg.selectAll("bars"))
-	
-    // JOIN new data with old elements.
-	svg.selectAll("a")
-		.data(filteredData)
-    .join(
-      function(enter){
-      return enter.append("a")
+  svg.selectAll(".bars")
+  .remove()
+  .data(data)
+  .join("a")
+  .attr("class","bars")
   .attr("href", d => d.link)
   .attr("target", d => d.link)
   .append("rect")
@@ -144,10 +98,18 @@ svg.selectAll("labels")
     .attr("fill", cScale("test")) //d=> cScale(d.location)
     .append("title")
     // .text(d => d.description)
-    .text(d => d.name + ': ' + d.birth + ' - ' + d.death)}
-    ,
-  function(exit) {
-    return exit.remove();
-  }
-    )
+    .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
+    // .attr("opacity",d=> cScale(d.Perc_Left))
+
+  svg.selectAll(".labels")
+  .remove()
+    .data(data)
+    .join("text")
+    .attr("class","labels")
+    .attr("x", d => xAxis(d['death']))
+    .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
+    .text(d => d.name)
+    // .style("fill", d => d.location)
+    .style("font-size",9)
+    .style("font-weight","bold")
   }
