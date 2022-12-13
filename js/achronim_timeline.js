@@ -25,6 +25,10 @@ const colors = d3.schemePastel1
 const cScale = d3.scaleOrdinal()
     .range(colors)
 
+  $("#reset-button")
+  .on("click", () => {
+    initVis()
+  })
 
 // Load Data
 d3.csv("data/Achronim_I.csv").then(rawdata => {
@@ -40,16 +44,17 @@ d3.csv("data/Achronim_I.csv").then(rawdata => {
     $("#search").autocomplete({source: data.map(d=> d.name),select: function (event, ui) {
       // var label = ui.item.label;
       var value = ui.item.value;
-      console.log(value)}})
+      update(value)
+    }})
     
     // init Viz
     initVis()
-
-    // Add bars for initial run
-    update()
 })
 
 function initVis(){
+// clear
+svg.selectAll("*").remove();
+
   // X axis
   xAxis
   .domain([
@@ -71,23 +76,8 @@ const locations = [...new Set(data.map(d=>d.location))]
 cScale
   .domain(locations)
 
-
-    // Legend
-  //   svg.append("g")
-  // .attr("class", "legend")
-  // .attr("transform", `translate(${WIDTH},10)`);
-  // const legend = d3.legendColor().scale(cScale)
-  // svg.select(".legend")
-  // .call(legend);
-
-  }
-
-
-function update() {
-  // const filteredData = data.filter(row => row.birth > x0 && row.death < x1)
-
-  svg.selectAll(".bars")
-  .remove()
+// Bars
+svg.selectAll(".bars")
   .data(data)
   .join("a")
   .attr("class","bars")
@@ -101,11 +91,11 @@ function update() {
     .attr("fill", cScale("test")) //d=> cScale(d.location)
     .append("title")
     // .text(d => d.description)
-    .text(d => d.name + ': ' + d.birth + ' - ' + d.death)
+    .text(d => d.name + ': ' + d.birth + ' - ' + d.death + '; ' + d.description)
     // .attr("opacity",d=> cScale(d.Perc_Left))
 
-  svg.selectAll(".labels")
-  .remove()
+//Labels  
+svg.selectAll(".labels")
     .data(data)
     .join("text")
     .attr("class","labels")
@@ -115,4 +105,35 @@ function update() {
     // .style("fill", d => d.location)
     .style("font-size",9)
     .style("font-weight","bold")
+
+    // Legend
+  //   svg.append("g")
+  // .attr("class", "legend")
+  // .attr("transform", `translate(${WIDTH},10)`);
+  // const legend = d3.legendColor().scale(cScale)
+  // svg.select(".legend")
+  // .call(legend);
+  }
+
+
+function update(name) {
+  const filteredData = data.filter(row => row.name == name)
+  console.log(filteredData)
+
+  svg.selectAll(".bars")
+    .data(filteredData, d => d.name)
+    .join(
+      function(enter) {
+        console.log("enter",enter)
+      },
+      function(update) {
+        update.selectAll("rect").attr("fill","#ff6961")
+        console.log("update", update)
+      },
+      function(exit) {
+        console.log("exit",exit)
+        return exit.selectAll("rect").style('opacity', 0.5).attr("fill",cScale("test"));
+      }
+    )
+
   }
