@@ -37,7 +37,10 @@ d3.csv("data/Achronim_I.csv").then(rawdata => {
     // Sort data
     data = rawdata.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
 
-    $("#search").autocomplete({source: data.map(d=> d.name)})
+    $("#search").autocomplete({source: data.map(d=> d.name),select: function (event, ui) {
+      // var label = ui.item.label;
+      var value = ui.item.value;
+      console.log(value)}})
     
     // init Viz
     initVis()
