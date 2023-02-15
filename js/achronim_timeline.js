@@ -31,17 +31,19 @@ const cScale = d3.scaleOrdinal()
   })
 
 // Load Data
-d3.csv("data/Achronim_I.csv").then(rawdata => {
+d3.tsv("data/bios_sefaria_preprocessed.tsv").then(rawdata => {
     // Data Pre-Processing
     rawdata.forEach(element => {
-      element['birth'] = Number(element['birth'])
-      element['death'] = Number(element['death'])
+      element['Birth Year '] = Number(element['Birth Year '])
+      element['Death Year'] = Number(element['Death Year'])
       return rawdata
     })
     // Sort data
-    data = rawdata.sort(function(a,b) { return d3.descending(a['birth'], b['birth']) || d3.descending(a['death'], b['death']) })
+    data = rawdata.sort(function(a,b) { return d3.descending(a['Birth Year '], b['Birth Year ']) || d3.descending(a['Death Year'], b['Death Year']) })
 
-    $("#search").autocomplete({source: data.map(d=> d.name),select: function (event, ui) {
+    console.log(data)
+
+    $("#search").autocomplete({source: data.map(d=> d['English Name']),select: function (event, ui) {
       // var label = ui.item.label;
       var value = ui.item.value;
       update(value)
@@ -58,8 +60,8 @@ svg.selectAll("*").remove();
   // X axis
   xAxis
   .domain([
-    d3.min(data, (d) => d["birth"]),
-    d3.max(data, (d) => d["death"]),
+    d3.min(data, (d) => d["Birth Year "]),
+    d3.max(data, (d) => d["Death Year"]),
   ]);
 svg
   .append("g")
@@ -67,7 +69,7 @@ svg
   .call(d3.axisTop(xAxis).tickFormat(d3.format("d")));
 
 // Y Axis
-yAxis.domain(data.map((d) => d["name"]))
+yAxis.domain(data.map((d) => d["Primary English Name"]))
 // svg.append("g").call(d3.axisLeft(yAxis))
 
 const locations = [...new Set(data.map(d=>d.location))]
@@ -81,17 +83,17 @@ svg.selectAll(".bars")
   .data(data)
   .join("a")
   .attr("class","bars")
-  .attr("href", d => d.link)
-  .attr("target", d => d.link)
+  .attr("href", d => d['English Wikipedia Link'])
+  .attr("target", d => d['English Wikipedia Link'])
   .append("rect")
-    .attr("x", d => xAxis(d['birth']))
-    .attr("y", d => yAxis(d['name']))
-    .attr("width", d => xAxis(d['death']) - xAxis(d['birth']))
+    .attr("x", d => xAxis(d['Birth Year ']))
+    .attr("y", d => yAxis(d['Primary English Name']))
+    .attr("width", d => xAxis(d['Death Year']) - xAxis(d['Birth Year ']))
     .attr("height", yAxis.bandwidth())
     .attr("fill", cScale("test")) //d=> cScale(d.location)
     .append("title")
     // .text(d => d.description)
-    .text(d => d.name + ': ' + d.birth + ' - ' + d.death + '; ' + d.description)
+    .text(d => d['Primary English Name'] + ': ' + d['Birth Year '] + ' - ' + d['Death Year'] + '; ' + d['English Biography'])
     // .attr("opacity",d=> cScale(d.Perc_Left))
 
 //Labels  
@@ -99,9 +101,9 @@ svg.selectAll(".labels")
     .data(data)
     .join("text")
     .attr("class","labels")
-    .attr("x", d => xAxis(d['death']))
-    .attr("y", d => yAxis(d['name'])+yAxis.bandwidth())
-    .text(d => d.name)
+    .attr("x", d => xAxis(d['Death Year']))
+    .attr("y", d => yAxis(d['Primary English Name'])+yAxis.bandwidth())
+    .text(d => d['Primary English Name'])
     // .style("fill", d => d.location)
     .style("font-size",9)
     .style("font-weight","bold")
@@ -137,3 +139,8 @@ function update(name) {
     )
 
   }
+
+// TODO:
+// Fix Search Bar
+// Add in Hebrew Names, other links etc
+// Add in colours based on country?
