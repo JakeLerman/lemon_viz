@@ -43,7 +43,7 @@ d3.tsv("data/bios_sefaria_preprocessed.tsv").then(rawdata => {
 
     console.log(data)
 
-    $("#search").autocomplete({source: data.map(d=> d['English Name']),select: function (event, ui) {
+    $("#search").autocomplete({source: data.map(d=> d['Primary English Name']),select: function (event, ui) {
       // var label = ui.item.label;
       var value = ui.item.value;
       update(value)
@@ -119,11 +119,11 @@ svg.selectAll(".labels")
 
 
 function update(name) {
-  const filteredData = data.filter(row => row.name == name)
+  const filteredData = data.filter(row => row['Primary English Name'] == name)
   console.log(filteredData)
 
   svg.selectAll(".bars")
-    .data(filteredData, d => d.name)
+    .data(filteredData, d => d['Primary English Name'])
     .join(
       function(enter) {
         console.log("enter",enter)
@@ -141,6 +141,5 @@ function update(name) {
   }
 
 // TODO:
-// Fix Search Bar
-// Add in Hebrew Names, other links etc
+// Work out how to display both Long name and colloquial name/Hebrew name?
 // Add in colours based on country?
