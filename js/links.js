@@ -86,9 +86,10 @@ function SankeyChart(
       [marginLeft, marginTop],
       [width - marginRight, height - marginBottom],
     ])
-    .linkSort(function (link1, link2) {
-      return link1.value > link2.value ? -1 : 1;
-    })({ nodes, links });
+    .linkSort((link1, link2) => (link1.value > link2.value ? -1 : 1))({
+    nodes,
+    links,
+  });
 
   // Compute titles and labels using layout nodes, so as to access aggregate values.
   if (typeof format !== 'function') format = d3.format(format);
@@ -209,13 +210,13 @@ function loadList(data, list) {
   const LS = d3.map(data, (d) => d.source);
   const nodeList = Array.from(new Set(LS));
   nodeList.forEach((item) => {
-    let option = document.createElement('option');
+    const option = document.createElement('option');
     option.innerText = item;
     list.appendChild(option);
   });
 }
 
-d3.csv('data/talmud_tanach_links.csv').then(function (data) {
+d3.csv('data/talmud_tanach_links.csv').then((data) => {
   // Format Data
   data.forEach((row) => {
     row.value = +row.value;
@@ -225,15 +226,15 @@ d3.csv('data/talmud_tanach_links.csv').then(function (data) {
   // Add list elements & event listener
   const list = document.getElementById('myList');
   loadList(data, list);
-  list.addEventListener('click', update);
+  list.addEventListener('change', update);
 
   // Run update for initial load
   update();
 
   // Update function for sankey
   function update() {
-    let val = $('#myList').val();
-    let filteredData = data.filter((d) => d.source === val);
+    const val = $('#myList').val();
+    const filteredData = data.filter((d) => d.source === val);
 
     const chart = SankeyChart(
       {

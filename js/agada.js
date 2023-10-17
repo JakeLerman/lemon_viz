@@ -1,8 +1,11 @@
 const margin = {
-  top: 10, right: 60, bottom: 50, left: 60,
+  top: 10,
+  right: 60,
+  bottom: 70,
+  left: 60,
 };
-const height = 300;
-const width = 600;
+const height = 500;
+const width = 1000;
 const font = 'Georgia';
 
 // append the svg object to the body of the page
@@ -65,13 +68,19 @@ function buildPieChart() {
   g.selectAll('pie')
     .data(pieData)
     .join('path')
-    .attr('d', d3.arc().innerRadius(0).outerRadius(radius))
+    .attr(
+      'd',
+      d3
+        .arc()
+        .innerRadius(radius / 2.5)
+        .outerRadius(radius),
+    )
     .attr('stroke', 'white')
     .style('fill', (d) => masechta_colours(d.index))
     .style('stroke-width', '2px')
     .style('opacity', 0)
     .transition(d3.transition().duration(700))
-    .style('opacity', 0.7);
+    .style('opacity', 1);
 }
 
 // ------------------------ Bar Chart------------------------------
@@ -93,7 +102,8 @@ function loadInitialGraph() {
     .attr('transform', 'translate(-10,0)rotate(-35)')
     .style('text-anchor', 'end')
     .style('color', '#464655ff')
-    .attr('font-family', 'Calibri');
+    .attr('font-family', 'Arial')
+    .attr('font-size', 12);
 
   g.append('g').call(d3.axisLeft(y)).style('color', '#464655ff');
 
@@ -114,23 +124,25 @@ function update(data, Seder = 'all') {
   const bars = g.selectAll('rect').data(filteredData, (d) => d.Masechet);
 
   bars.join(
-    (enter) => enter
-      .append('rect')
-      .attr('x', (d) => x(d.Masechet))
-      .attr('y', (d) => y(d.percent_aggada))
-      .transition(d3.transition().duration(500))
-      .attr('width', x.bandwidth())
-      .attr(
-        'height',
-        (d) => height - margin.top - margin.bottom - y(d.percent_aggada),
-      )
-      .attr('fill', (d) => masechta_colours(d.Seder))
-      .style('opacity', 1),
+    (enter) =>
+      enter
+        .append('rect')
+        .attr('x', (d) => x(d.Masechet))
+        .attr('y', (d) => y(d.percent_aggada))
+        .transition(d3.transition().duration(500))
+        .attr('width', x.bandwidth())
+        .attr(
+          'height',
+          (d) => height - margin.top - margin.bottom - y(d.percent_aggada),
+        )
+        .attr('fill', (d) => masechta_colours(d.Seder))
+        .style('opacity', 1),
     (update) => update,
-    (exit) => exit
-      .transition(d3.transition().duration(500))
-      .style('opacity', 0)
-      .remove(),
+    (exit) =>
+      exit
+        .transition(d3.transition().duration(500))
+        .style('opacity', 0)
+        .remove(),
   );
 }
 
