@@ -1,11 +1,11 @@
 // Global Variables
 const MARGIN = {
   LEFT: 50,
-  RIGHT: 200,
+  RIGHT: 350,
   TOP: 110,
   BOTTOM: 50,
 };
-const WIDTH = 1200 - MARGIN.LEFT - MARGIN.RIGHT;
+const WIDTH = 1350 - MARGIN.LEFT - MARGIN.RIGHT;
 const HEIGHT = 3500 - MARGIN.TOP - MARGIN.BOTTOM;
 
 const svg = d3
