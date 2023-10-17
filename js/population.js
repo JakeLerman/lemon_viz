@@ -79,14 +79,14 @@ continents.forEach((continent, i) => {
     .text(continent);
 });
 
-d3.json('data/jewishData.json').then(function (data) {
+d3.json('data/jewishData.json').then((data) => {
   // clean data
-  formattedData = data.map((year) => {
-    return year['countries'].filter((country) => {
+  formattedData = data.map((year) =>
+    year.countries.filter((country) => {
       const dataExists = country.population;
       return dataExists;
-    });
-  });
+    }),
+  );
 
   // first run of the visualization
   update(formattedData[0]);
@@ -129,9 +129,8 @@ function update(data) {
 
   const filteredData = data.filter((d) => {
     if (continent === 'all') return true;
-    else {
-      return d.continent == continent;
-    }
+
+    return d.continent == continent;
   });
 
   // JOIN new data with old elements.

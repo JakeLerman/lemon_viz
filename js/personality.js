@@ -19,7 +19,7 @@ const g = svg
   .append('g')
   .attr('transform', `translate(${MARGIN.LEFT}, ${MARGIN.TOP})`);
 
-var format = d3
+const format = d3
   .formatLocale({
     decimal: '.',
     thousands: ',',
@@ -28,29 +28,21 @@ var format = d3
   })
   .format('$,d');
 
-var color = d3.scaleOrdinal().range(
-  d3.schemeCategory10.map(function (c) {
+const color = d3.scaleOrdinal().range(
+  d3.schemeCategory10.map((c) => {
     c = d3.rgb(c);
     c.opacity = 0.6;
     return c;
   }),
 );
 
-var nest = d3
+const nest = d3
   .nest()
-  .key(function (d) {
-    return d.Seder;
-  })
-  .key(function (d) {
-    return d.Masechet;
-  })
-  .rollup(function (d) {
-    return d3.sum(d, function (d) {
-      return d.adjusted_count;
-    });
-  });
+  .key((d) => d.Seder)
+  .key((d) => d.Masechet)
+  .rollup((d) => d3.sum(d, (d) => d.adjusted_count));
 
-var treemap = d3.treemap().size([WIDTH, HEIGHT]).padding(1).round(true);
+const treemap = d3.treemap().size([WIDTH, HEIGHT]).padding(1).round(true);
 
 function type(d) {
   d.adjusted_count = +d.adjusted_count;
@@ -58,7 +50,7 @@ function type(d) {
 }
 
 // create a tooltip
-var Tooltip = d3
+const Tooltip = d3
   .select('#chart-area')
   .append('div')
   .style('opacity', 0)
@@ -70,33 +62,27 @@ var Tooltip = d3
   .style('padding', '5px');
 
 // Three function that change the tooltip when user hover / move / leave a cell
-var mouseover = function (d) {
+const mouseover = function (d) {
   Tooltip.style('opacity', 1);
   d3.select(this).style('stroke', 'black').style('opacity', 1);
 };
-var mousemove = function (d) {
-  Tooltip.html('Frequency Rating: ' + Math.round(d.value))
-    .style('left', d3.mouse(this)[0] + 10 + 'px')
-    .style('top', d3.mouse(this)[1] + 'px');
+const mousemove = function (d) {
+  Tooltip.html(`Frequency Rating: ${Math.round(d.value)}`)
+    .style('left', `${d3.mouse(this)[0] + 300}px`)
+    .style('top', `${d3.mouse(this)[1]}px`);
 };
-var mouseleave = function (d) {
+const mouseleave = function (d) {
   Tooltip.style('opacity', 0);
   d3.select(this).style('stroke', 'none').style('opacity', 0.8);
 };
 
-d3.csv('data/abaye_treemap_adjusted.csv', type, function (error, data) {
+d3.csv('data/abaye_treemap_adjusted.csv', type, (error, data) => {
   if (error) throw error;
 
-  var root = d3
-    .hierarchy({ values: nest.entries(data) }, function (d) {
-      return d.values;
-    })
-    .sum(function (d) {
-      return d.value;
-    })
-    .sort(function (a, b) {
-      return b.value - a.value;
-    });
+  const root = d3
+    .hierarchy({ values: nest.entries(data) }, (d) => d.values)
+    .sum((d) => d.value)
+    .sort((a, b) => b.value - a.value);
 
   treemap(root);
 
@@ -105,21 +91,11 @@ d3.csv('data/abaye_treemap_adjusted.csv', type, function (error, data) {
     .data(root.leaves())
     .enter()
     .append('rect')
-    .attr('x', function (d) {
-      return d.x0 + 'px';
-    })
-    .attr('y', function (d) {
-      return d.y0 + 'px';
-    })
-    .attr('width', function (d) {
-      return d.x1 - d.x0 + 'px';
-    })
-    .attr('height', function (d) {
-      return d.y1 - d.y0 + 'px';
-    })
-    .style('fill', function (d) {
-      return color(d.parent.data.key);
-    })
+    .attr('x', (d) => `${d.x0}px`)
+    .attr('y', (d) => `${d.y0}px`)
+    .attr('width', (d) => `${d.x1 - d.x0}px`)
+    .attr('height', (d) => `${d.y1 - d.y0}px`)
+    .style('fill', (d) => color(d.parent.data.key))
     .on('mouseover', mouseover)
     .on('mousemove', mousemove)
     .on('mouseleave', mouseleave);
@@ -138,15 +114,9 @@ d3.csv('data/abaye_treemap_adjusted.csv', type, function (error, data) {
     .data(root.leaves())
     .enter()
     .append('text')
-    .attr('x', function (d) {
-      return d.x0 + 10;
-    }) // +10 to adjust position (more right)
-    .attr('y', function (d) {
-      return d.y0 + 20;
-    }) // +20 to adjust position (lower)
-    .text(function (d) {
-      return d.data.key;
-    })
+    .attr('x', (d) => d.x0 + 10) // +10 to adjust position (more right)
+    .attr('y', (d) => d.y0 + 20) // +20 to adjust position (lower)
+    .text((d) => d.data.key)
     .attr('font-size', '15px')
     .attr('fill', 'white');
 });
