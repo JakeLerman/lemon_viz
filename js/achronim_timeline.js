@@ -1,9 +1,12 @@
 // Global Variables
 const MARGIN = {
-  LEFT: 50, RIGHT: 200, TOP: 110, BOTTOM: 50,
+  LEFT: 50,
+  RIGHT: 200,
+  TOP: 110,
+  BOTTOM: 50,
 };
 const WIDTH = 1200 - MARGIN.LEFT - MARGIN.RIGHT;
-const HEIGHT = 2000 - MARGIN.TOP - MARGIN.BOTTOM;
+const HEIGHT = 3500 - MARGIN.TOP - MARGIN.BOTTOM;
 
 const svg = d3
   .select('#chart-area')
@@ -16,7 +19,7 @@ const svg = d3
     WIDTH + MARGIN.LEFT + MARGIN.RIGHT,
     HEIGHT + MARGIN.TOP + MARGIN.BOTTOM,
   ])
-  .attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
+  .attr('style', 'max-width: 100%; height: 100%;')
   .append('g')
   .attr('transform', `translate(${MARGIN.LEFT},${MARGIN.TOP})`);
 
@@ -24,7 +27,7 @@ let data;
 
 // Scales/Axis
 const xAxis = d3.scaleLinear().range([0, WIDTH]);
-const yAxis = d3.scaleBand().range([HEIGHT, 0]).paddingInner(0.3);
+const yAxis = d3.scaleBand().range([HEIGHT, 0]).paddingInner(0.5);
 const colors = d3.schemePastel1;
 const cScale = d3.scaleOrdinal().range(colors);
 
@@ -41,10 +44,11 @@ d3.tsv('data/bios_sefaria_preprocessed.tsv').then((rawdata) => {
     return rawdata;
   });
   // Sort data
-  data = rawdata.sort((a, b) => (
-    d3.descending(a['Birth Year '], b['Birth Year '])
-      || d3.descending(a['Death Year'], b['Death Year'])
-  ));
+  data = rawdata.sort(
+    (a, b) =>
+      d3.descending(a['Birth Year '], b['Birth Year ']) ||
+      d3.descending(a['Death Year'], b['Death Year']),
+  );
 
   console.log(data);
 
@@ -94,20 +98,15 @@ function initVis() {
     .attr('target', (d) => d['English Wikipedia Link'])
     .append('rect')
     .attr('x', (d) => xAxis(d['Birth Year ']))
-    .attr('y', (d) => yAxis(d['Primary English Name']))
+    .attr('y', (d) => yAxis(d['Primary English Name']) + yAxis.bandwidth() / 2)
     .attr('width', (d) => xAxis(d['Death Year']) - xAxis(d['Birth Year ']))
     .attr('height', yAxis.bandwidth())
     .attr('fill', cScale('test')) // d=> cScale(d.location)
     .append('title')
     // .text(d => d.description)
     .text(
-      (d) => `${d['Primary English Name']
-      }: ${
-        d['Birth Year ']
-      } - ${
-        d['Death Year']
-      }; ${
-        d['English Biography']}`,
+      (d) =>
+        `${d['Primary English Name']}: ${d['Birth Year ']} - ${d['Death Year']}; ${d['English Biography']}`,
     );
   // .attr("opacity",d=> cScale(d.Perc_Left))
 
@@ -117,20 +116,22 @@ function initVis() {
     .data(data)
     .join('text')
     .attr('class', 'labels')
-    .attr('x', (d) => xAxis(d['Death Year']))
+    .attr('x', (d) => xAxis(d['Death Year']) + 5)
     .attr('y', (d) => yAxis(d['Primary English Name']) + yAxis.bandwidth())
-    .text((d) => d['Primary English Name'])
+    .text(
+      (d) => `${d['Primary English Name']}, ${d['Secondary English Names']}`,
+    )
     // .style("fill", d => d.location)
     .style('font-size', 9)
     .style('font-weight', 'bold');
 
   // Legend
-  //   svg.append("g")
-  // .attr("class", "legend")
-  // .attr("transform", `translate(${WIDTH},10)`);
-  // const legend = d3.legendColor().scale(cScale)
-  // svg.select(".legend")
-  // .call(legend);
+  // svg
+  //   .append('g')
+  //   .attr('class', 'legend')
+  //   .attr('transform', `translate(${WIDTH},10)`);
+  // const legend = d3.legendColor().scale(cScale);
+  // svg.select('.legend').call(legend);
 }
 
 function update(name) {
@@ -138,6 +139,23 @@ function update(name) {
     (row) => row['Primary English Name'] == name,
   );
   console.log(filteredData);
+
+  // Remove labels
+  svg.selectAll('.labels').remove();
+
+  svg
+    .selectAll('.labels')
+    .data(filteredData)
+    .join('text')
+    .attr('class', 'labels')
+    .attr('x', (d) => xAxis(d['Death Year']))
+    .attr('y', (d) => yAxis(d['Primary English Name']) + yAxis.bandwidth())
+    .text(
+      (d) => `${d['Primary English Name']}, ${d['Secondary English Names']}`,
+    )
+    // .style("fill", d => d.location)
+    .style('font-size', 9)
+    .style('font-weight', 'bold');
 
   svg
     .selectAll('.bars')
@@ -154,12 +172,8 @@ function update(name) {
         console.log('exit', exit);
         return exit
           .selectAll('rect')
-          .style('opacity', 0.5)
+          .style('opacity', 0.1)
           .attr('fill', cScale('test'));
       },
     );
 }
-
-// TODO:
-// Work out how to display both Long name and colloquial name/Hebrew name?
-// Add in colours based on country?
